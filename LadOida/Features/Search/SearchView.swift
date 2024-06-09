@@ -7,9 +7,13 @@
 
 import SwiftUI
 import ComposableArchitecture
+import MapKit
 
 struct SearchView: View {
     var body: some View {
-        Text("Search")
+        Map(bounds: .init(centerCoordinateBounds: .init(center: .init(latitude: 47.6964719, longitude: 13.3457347), span: .init()))) {
+
+        }
+        .mapControlVisibility(.hidden)
     }
 }
