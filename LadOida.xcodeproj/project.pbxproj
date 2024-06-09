@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD62C16006E00DE71AD /* LadOidaApp.swift */; };
-		7102FDD92C16006E00DE71AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD82C16006E00DE71AD /* ContentView.swift */; };
+		7102FDD92C16006E00DE71AD /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD82C16006E00DE71AD /* AppView.swift */; };
 		7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDA2C16006F00DE71AD /* Assets.xcassets */; };
 		7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDE42C16029600DE71AD /* APISecretKey.swift */; };
 		7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7102FDE72C16052000DE71AD /* ComposableArchitecture */; };
 		716D32092C16071700802D05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716D32072C16071700802D05 /* Preview Assets.xcassets */; };
+		716D320D2C16076E00802D05 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320C2C16076E00802D05 /* APIClient.swift */; };
+		716D32102C16083200802D05 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320F2C16083200802D05 /* Call.swift */; };
+		716D32122C16085200802D05 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32112C16085200802D05 /* HTTPMethod.swift */; };
+		716D32142C1617AC00802D05 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32132C1617AC00802D05 /* APIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7102FDD32C16006E00DE71AD /* LadOida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LadOida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7102FDD62C16006E00DE71AD /* LadOidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadOidaApp.swift; sourceTree = "<group>"; };
-		7102FDD82C16006E00DE71AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7102FDD82C16006E00DE71AD /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		7102FDDA2C16006F00DE71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7102FDE42C16029600DE71AD /* APISecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecretKey.swift; sourceTree = "<group>"; };
 		716D32072C16071700802D05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		716D320C2C16076E00802D05 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		716D320F2C16083200802D05 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
+		716D32112C16085200802D05 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		716D32132C1617AC00802D05 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +63,13 @@
 		7102FDD52C16006E00DE71AD /* LadOida */ = {
 			isa = PBXGroup;
 			children = (
+				716D320E2C1607A700802D05 /* Shared */,
+				716D320B2C16075A00802D05 /* Network */,
+				716D320A2C16073C00802D05 /* Features */,
 				7102FDD62C16006E00DE71AD /* LadOidaApp.swift */,
-				7102FDD82C16006E00DE71AD /* ContentView.swift */,
-				7102FDDA2C16006F00DE71AD /* Assets.xcassets */,
+				7102FDD82C16006E00DE71AD /* AppView.swift */,
 				7102FDE42C16029600DE71AD /* APISecretKey.swift */,
+				7102FDDA2C16006F00DE71AD /* Assets.xcassets */,
 				716D32082C16071700802D05 /* Preview Content */,
 			);
 			path = LadOida;
@@ -70,6 +81,31 @@
 				716D32072C16071700802D05 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		716D320A2C16073C00802D05 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		716D320B2C16075A00802D05 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				716D320C2C16076E00802D05 /* APIClient.swift */,
+				716D320F2C16083200802D05 /* Call.swift */,
+				716D32112C16085200802D05 /* HTTPMethod.swift */,
+				716D32132C1617AC00802D05 /* APIError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		716D320E2C1607A700802D05 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +185,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */,
-				7102FDD92C16006E00DE71AD /* ContentView.swift in Sources */,
+				7102FDD92C16006E00DE71AD /* AppView.swift in Sources */,
+				716D32122C16085200802D05 /* HTTPMethod.swift in Sources */,
+				716D32102C16083200802D05 /* Call.swift in Sources */,
 				7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */,
+				716D320D2C16076E00802D05 /* APIClient.swift in Sources */,
+				716D32142C1617AC00802D05 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
