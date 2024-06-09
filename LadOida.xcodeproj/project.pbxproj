@@ -11,6 +11,7 @@
 		7102FDD92C16006E00DE71AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD82C16006E00DE71AD /* ContentView.swift */; };
 		7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDA2C16006F00DE71AD /* Assets.xcassets */; };
 		7102FDDE2C16006F00DE71AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDD2C16006F00DE71AD /* Preview Assets.xcassets */; };
+		7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDE42C16029600DE71AD /* APISecretKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		7102FDD82C16006E00DE71AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7102FDDA2C16006F00DE71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7102FDDD2C16006F00DE71AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7102FDE42C16029600DE71AD /* APISecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecretKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				7102FDD82C16006E00DE71AD /* ContentView.swift */,
 				7102FDDA2C16006F00DE71AD /* Assets.xcassets */,
 				7102FDDC2C16006F00DE71AD /* Preview Content */,
+				7102FDE42C16029600DE71AD /* APISecretKey.swift */,
 			);
 			path = LadOida;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */,
 				7102FDD92C16006E00DE71AD /* ContentView.swift in Sources */,
 				7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */,
 			);
