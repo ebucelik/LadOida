@@ -17,6 +17,18 @@
 		716D32102C16083200802D05 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320F2C16083200802D05 /* Call.swift */; };
 		716D32122C16085200802D05 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32112C16085200802D05 /* HTTPMethod.swift */; };
 		716D32142C1617AC00802D05 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32132C1617AC00802D05 /* APIError.swift */; };
+		716D32162C161DF100802D05 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32152C161DF100802D05 /* ViewState.swift */; };
+		716D32192C162F6C00802D05 /* AuthenticationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32182C162F6C00802D05 /* AuthenticationMode.swift */; };
+		716D321B2C16306A00802D05 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D321A2C16306A00802D05 /* Country.swift */; };
+		716D321D2C16312200802D05 /* ProximitySearchStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D321C2C16312200802D05 /* ProximitySearchStation.swift */; };
+		716D321F2C16329A00802D05 /* ProximitySearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D321E2C16329A00802D05 /* ProximitySearchLocation.swift */; };
+		716D32212C16330C00802D05 /* OpeningHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32202C16330C00802D05 /* OpeningHours.swift */; };
+		716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32222C16338C00802D05 /* OpeningHourDetail.swift */; };
+		716D32252C1633C000802D05 /* ProximitySearchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32242C1633C000802D05 /* ProximitySearchPoint.swift */; };
+		716D32272C16352800802D05 /* GeneralSearchStationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32262C16352800802D05 /* GeneralSearchStationResult.swift */; };
+		716D32292C16387C00802D05 /* GeneralSearchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32282C16387C00802D05 /* GeneralSearchPoint.swift */; };
+		716D322B2C1638A500802D05 /* GeneralSearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D322A2C1638A500802D05 /* GeneralSearchLocation.swift */; };
+		716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D322C2C1638C000802D05 /* GeneralSearchStation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +42,18 @@
 		716D320F2C16083200802D05 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		716D32112C16085200802D05 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		716D32132C1617AC00802D05 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		716D32152C161DF100802D05 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		716D32182C162F6C00802D05 /* AuthenticationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMode.swift; sourceTree = "<group>"; };
+		716D321A2C16306A00802D05 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		716D321C2C16312200802D05 /* ProximitySearchStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximitySearchStation.swift; sourceTree = "<group>"; };
+		716D321E2C16329A00802D05 /* ProximitySearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximitySearchLocation.swift; sourceTree = "<group>"; };
+		716D32202C16330C00802D05 /* OpeningHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningHours.swift; sourceTree = "<group>"; };
+		716D32222C16338C00802D05 /* OpeningHourDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningHourDetail.swift; sourceTree = "<group>"; };
+		716D32242C1633C000802D05 /* ProximitySearchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximitySearchPoint.swift; sourceTree = "<group>"; };
+		716D32262C16352800802D05 /* GeneralSearchStationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSearchStationResult.swift; sourceTree = "<group>"; };
+		716D32282C16387C00802D05 /* GeneralSearchPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSearchPoint.swift; sourceTree = "<group>"; };
+		716D322A2C1638A500802D05 /* GeneralSearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSearchLocation.swift; sourceTree = "<group>"; };
+		716D322C2C1638C000802D05 /* GeneralSearchStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSearchStation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +121,7 @@
 				716D320F2C16083200802D05 /* Call.swift */,
 				716D32112C16085200802D05 /* HTTPMethod.swift */,
 				716D32132C1617AC00802D05 /* APIError.swift */,
+				716D32152C161DF100802D05 /* ViewState.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -104,8 +129,27 @@
 		716D320E2C1607A700802D05 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				716D32172C162F5300802D05 /* Models */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		716D32172C162F5300802D05 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				716D32182C162F6C00802D05 /* AuthenticationMode.swift */,
+				716D321A2C16306A00802D05 /* Country.swift */,
+				716D321C2C16312200802D05 /* ProximitySearchStation.swift */,
+				716D321E2C16329A00802D05 /* ProximitySearchLocation.swift */,
+				716D32202C16330C00802D05 /* OpeningHours.swift */,
+				716D32222C16338C00802D05 /* OpeningHourDetail.swift */,
+				716D32242C1633C000802D05 /* ProximitySearchPoint.swift */,
+				716D32262C16352800802D05 /* GeneralSearchStationResult.swift */,
+				716D32282C16387C00802D05 /* GeneralSearchPoint.swift */,
+				716D322A2C1638A500802D05 /* GeneralSearchLocation.swift */,
+				716D322C2C1638C000802D05 /* GeneralSearchStation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,13 +228,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				716D32272C16352800802D05 /* GeneralSearchStationResult.swift in Sources */,
+				716D321F2C16329A00802D05 /* ProximitySearchLocation.swift in Sources */,
 				7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */,
+				716D32212C16330C00802D05 /* OpeningHours.swift in Sources */,
 				7102FDD92C16006E00DE71AD /* AppView.swift in Sources */,
+				716D321D2C16312200802D05 /* ProximitySearchStation.swift in Sources */,
 				716D32122C16085200802D05 /* HTTPMethod.swift in Sources */,
 				716D32102C16083200802D05 /* Call.swift in Sources */,
+				716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */,
+				716D32192C162F6C00802D05 /* AuthenticationMode.swift in Sources */,
+				716D32252C1633C000802D05 /* ProximitySearchPoint.swift in Sources */,
 				7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */,
 				716D320D2C16076E00802D05 /* APIClient.swift in Sources */,
+				716D322B2C1638A500802D05 /* GeneralSearchLocation.swift in Sources */,
+				716D32162C161DF100802D05 /* ViewState.swift in Sources */,
+				716D321B2C16306A00802D05 /* Country.swift in Sources */,
+				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
 				716D32142C1617AC00802D05 /* APIError.swift in Sources */,
+				716D32292C16387C00802D05 /* GeneralSearchPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
