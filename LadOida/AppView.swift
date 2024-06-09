@@ -6,15 +6,29 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct AppView: View {
+
+    let store: StoreOf<AppCore>
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            if store.allMetaDataLoaded {
+                TabView {
+                    SearchView()
+                        .tabItem {
+                            Label("Search Stations", systemImage: "sparkle.magnifyingglass")
+                        }
+                }
+                .navigationTitle("LAD OIDA")
+                .navigationBarTitleDisplayMode(.inline)
+            } else {
+                Label("LAD OIDA", systemImage: "bolt.batteryblock")
+            }
         }
-        .padding()
+        .onAppear {
+            store.send(.onViewAppear)
+        }
     }
 }

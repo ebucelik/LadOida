@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct LadOidaApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView()
+            AppView(
+                store: Store(
+                    initialState: AppCore.State(),
+                    reducer: {
+                        AppCore(service: AppService())
+                    }
+                )
+            )
         }
     }
 }
