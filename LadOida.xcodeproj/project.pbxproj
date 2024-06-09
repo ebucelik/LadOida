@@ -10,8 +10,9 @@
 		7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD62C16006E00DE71AD /* LadOidaApp.swift */; };
 		7102FDD92C16006E00DE71AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDD82C16006E00DE71AD /* ContentView.swift */; };
 		7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDA2C16006F00DE71AD /* Assets.xcassets */; };
-		7102FDDE2C16006F00DE71AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDD2C16006F00DE71AD /* Preview Assets.xcassets */; };
 		7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDE42C16029600DE71AD /* APISecretKey.swift */; };
+		7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7102FDE72C16052000DE71AD /* ComposableArchitecture */; };
+		7102FDEB2C16063900DE71AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDE92C16063900DE71AD /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,8 +20,8 @@
 		7102FDD62C16006E00DE71AD /* LadOidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadOidaApp.swift; sourceTree = "<group>"; };
 		7102FDD82C16006E00DE71AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7102FDDA2C16006F00DE71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7102FDDD2C16006F00DE71AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7102FDE42C16029600DE71AD /* APISecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecretKey.swift; sourceTree = "<group>"; };
+		7102FDE92C16063900DE71AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,18 +58,19 @@
 				7102FDD62C16006E00DE71AD /* LadOidaApp.swift */,
 				7102FDD82C16006E00DE71AD /* ContentView.swift */,
 				7102FDDA2C16006F00DE71AD /* Assets.xcassets */,
-				7102FDDC2C16006F00DE71AD /* Preview Content */,
+				7102FDEA2C16063900DE71AD /* Preview Content */,
 				7102FDE42C16029600DE71AD /* APISecretKey.swift */,
 			);
 			path = LadOida;
 			sourceTree = "<group>";
 		};
-		7102FDDC2C16006F00DE71AD /* Preview Content */ = {
+		7102FDEA2C16063900DE71AD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				7102FDDD2C16006F00DE71AD /* Preview Assets.xcassets */,
+				7102FDE92C16063900DE71AD /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../../../../.Trash/Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +89,9 @@
 			dependencies = (
 			);
 			name = LadOida;
+			packageProductDependencies = (
+				7102FDE72C16052000DE71AD /* ComposableArchitecture */,
+			);
 			productName = LadOida;
 			productReference = 7102FDD32C16006E00DE71AD /* LadOida.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +120,9 @@
 				Base,
 			);
 			mainGroup = 7102FDCA2C16006E00DE71AD;
+			packageReferences = (
+				7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 7102FDD42C16006E00DE71AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -128,7 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7102FDDE2C16006F00DE71AD /* Preview Assets.xcassets in Resources */,
+				7102FDEB2C16063900DE71AD /* Preview Assets.xcassets in Resources */,
 				7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +371,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7102FDE72C16052000DE71AD /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7102FDCB2C16006E00DE71AD /* Project object */;
 }
