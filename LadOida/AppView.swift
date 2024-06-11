@@ -16,7 +16,7 @@ struct AppView: View {
         NavigationStack {
             if store.allMetaDataLoaded {
                 TabView {
-                    SearchView()
+                    SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
                         .tabItem {
                             Label("Search Stations", systemImage: "sparkle.magnifyingglass")
                         }

@@ -30,7 +30,8 @@ open class APIClient {
 
         urlRequest.httpMethod = call.method.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.addValue("Basic \(APISecretKey.apiKey)", forHTTPHeaderField: "Authorization")
+        urlRequest.addValue(APISecretKey.apiKey, forHTTPHeaderField: "Apikey")
+        urlRequest.addValue("https://ladoida.at", forHTTPHeaderField: "Referer")
         urlRequest.httpBody = call.body
 
         let urlResponse = try await URLSession.shared.data(for: urlRequest)

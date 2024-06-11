@@ -10,10 +10,45 @@ import ComposableArchitecture
 import MapKit
 
 struct SearchView: View {
-    var body: some View {
-        Map(bounds: .init(centerCoordinateBounds: .init(center: .init(latitude: 47.6964719, longitude: 13.3457347), span: .init()))) {
 
+    @Bindable
+    var store: StoreOf<SearchCore>
+
+    var body: some View {
+        VStack {
+            switch store.searchResult {
+            case .none:
+                InfoView(state: .info("Suche nach Ladestellen", "magnifyingglass"))
+
+            case .loading:
+                InfoView(state: .loading)
+
+            case let .loaded(searchResponse):
+                ForEach(searchResponse.mapItems, id: \.self) { mapItem in
+                    Text(mapItem.name ?? "")
+                }
+
+            case .error:
+                InfoView(state: .error("Keine Adresse gefunden", "xmark.circle.fill"))
+            }
         }
-        .mapControlVisibility(.hidden)
+        .searchable(text: $store.searchText, prompt: "Adresse eingeben")
+
+        
+
+//        Map(
+//            bounds: .init(
+//                centerCoordinateBounds: .init(
+//                    center: .init(
+//                        latitude: 47.6964719,
+//                        longitude: 13.3457347
+//                    ),
+//                    span: .init()
+//                )
+//            )
+//        ) {
+//
+//        }
+//        .mapControlVisibility(.hidden)
     }
 }

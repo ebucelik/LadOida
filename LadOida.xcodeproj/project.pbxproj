@@ -35,6 +35,10 @@
 		716D32362C1647BF00802D05 /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32352C1647BF00802D05 /* VehicleType.swift */; };
 		716D32382C16481E00802D05 /* AppCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32372C16481E00802D05 /* AppCalls.swift */; };
 		716D323A2C16505000802D05 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D32392C16505000802D05 /* SearchView.swift */; };
+		716F47242C18D02A00D58C1C /* SearchCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47232C18D02A00D58C1C /* SearchCore.swift */; };
+		716F47272C18D36A00D58C1C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47262C18D36A00D58C1C /* InfoView.swift */; };
+		716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47292C18D9C400D58C1C /* LocalSearchService.swift */; };
+		716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		716D32352C1647BF00802D05 /* VehicleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 		716D32372C16481E00802D05 /* AppCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCalls.swift; sourceTree = "<group>"; };
 		716D32392C16505000802D05 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		716F47232C18D02A00D58C1C /* SearchCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCore.swift; sourceTree = "<group>"; };
+		716F47262C18D36A00D58C1C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		716F47292C18D9C400D58C1C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
+		716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +153,8 @@
 		716D320E2C1607A700802D05 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				716F47282C18D9B900D58C1C /* Service */,
+				716F47252C18D36100D58C1C /* Views */,
 				716D32172C162F5300802D05 /* Models */,
 			);
 			path = Shared;
@@ -166,6 +176,7 @@
 				716D322C2C1638C000802D05 /* GeneralSearchStation.swift */,
 				716D32332C16477E00802D05 /* ConnectorType.swift */,
 				716D32352C1647BF00802D05 /* VehicleType.swift */,
+				716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,8 +185,25 @@
 			isa = PBXGroup;
 			children = (
 				716D32392C16505000802D05 /* SearchView.swift */,
+				716F47232C18D02A00D58C1C /* SearchCore.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		716F47252C18D36100D58C1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				716F47262C18D36A00D58C1C /* InfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		716F47282C18D9B900D58C1C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				716F47292C18D9C400D58C1C /* LocalSearchService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +289,7 @@
 				7102FDD92C16006E00DE71AD /* AppView.swift in Sources */,
 				716D321D2C16312200802D05 /* ProximitySearchStation.swift in Sources */,
 				716D32122C16085200802D05 /* HTTPMethod.swift in Sources */,
+				716F47272C18D36A00D58C1C /* InfoView.swift in Sources */,
 				716D32102C16083200802D05 /* Call.swift in Sources */,
 				716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */,
 				716D32342C16477E00802D05 /* ConnectorType.swift in Sources */,
@@ -270,13 +299,16 @@
 				716D32362C1647BF00802D05 /* VehicleType.swift in Sources */,
 				716D320D2C16076E00802D05 /* APIClient.swift in Sources */,
 				716D323A2C16505000802D05 /* SearchView.swift in Sources */,
+				716F47242C18D02A00D58C1C /* SearchCore.swift in Sources */,
 				716D322B2C1638A500802D05 /* GeneralSearchLocation.swift in Sources */,
 				716D32302C16448200802D05 /* AppCore.swift in Sources */,
 				716D32382C16481E00802D05 /* AppCalls.swift in Sources */,
 				716D32162C161DF100802D05 /* ViewState.swift in Sources */,
 				716D32322C1646DF00802D05 /* AppService.swift in Sources */,
 				716D321B2C16306A00802D05 /* Country.swift in Sources */,
+				716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */,
 				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
+				716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */,
 				716D32142C1617AC00802D05 /* APIError.swift in Sources */,
 				716D32292C16387C00802D05 /* GeneralSearchPoint.swift in Sources */,
 			);

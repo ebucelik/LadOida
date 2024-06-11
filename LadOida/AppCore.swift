@@ -17,6 +17,8 @@ public struct AppCore {
         var connectoryTypes: ViewState<[ConnectorType]> = .none
         var vehicleTypes: ViewState<[VehicleType]> = .none
 
+        var searchState: SearchCore.State = SearchCore.State()
+
         var allMetaDataLoaded: Bool {
             if case .loaded = countries,
                case .loaded = authenticationModes,
@@ -43,6 +45,8 @@ public struct AppCore {
 
         case fetchVehicleTypes
         case vehicleTypesStateChanged(ViewState<[VehicleType]>)
+
+        case searchAction(SearchCore.Action)
     }
 
     let service: AppServiceProtocol
@@ -52,6 +56,18 @@ public struct AppCore {
     }
 
     public var body: some ReducerOf<Self> {
+        Scope(
+            state: \.searchState,
+            action: \.searchAction
+        ) {
+            SearchCore(
+                searchService: LocalSearchService(
+                    lat: 47.6964719,
+                    lng: 13.3457347
+                )
+            )
+        }
+        
         Reduce { state, action in
             switch action {
             case .onViewAppear:
@@ -67,7 +83,7 @@ public struct AppCore {
                 )
                 .debounce(
                     id: DebounceId(),
-                    for: 3,
+                    for: 1.5,
                     scheduler: DispatchQueue.main.eraseToAnyScheduler()
                 )
 
@@ -133,6 +149,9 @@ public struct AppCore {
             case let .vehicleTypesStateChanged(stateChanged):
                 state.vehicleTypes = stateChanged
 
+                return .none
+
+            case .searchAction:
                 return .none
             }
         }
