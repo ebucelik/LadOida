@@ -16,7 +16,10 @@ struct LadOidaApp: App {
                 store: Store(
                     initialState: AppCore.State(),
                     reducer: {
-                        AppCore(service: AppService())
+                        AppCore(
+                            service: Services.appService,
+                            searchService: Services.searchService
+                        )
                     }
                 )
             )

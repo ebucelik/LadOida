@@ -50,9 +50,14 @@ public struct AppCore {
     }
 
     let service: AppServiceProtocol
+    let searchService: LocalSearchServiceProtocol
 
-    init(service: AppServiceProtocol) {
+    init(
+        service: AppServiceProtocol,
+        searchService: LocalSearchServiceProtocol
+    ) {
         self.service = service
+        self.searchService = searchService
     }
 
     public var body: some ReducerOf<Self> {
@@ -60,12 +65,7 @@ public struct AppCore {
             state: \.searchState,
             action: \.searchAction
         ) {
-            SearchCore(
-                searchService: LocalSearchService(
-                    lat: 47.6964719,
-                    lng: 13.3457347
-                )
-            )
+            SearchCore(searchService: searchService)
         }
         
         Reduce { state, action in

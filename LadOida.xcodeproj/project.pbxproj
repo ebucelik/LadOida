@@ -39,6 +39,7 @@
 		716F47272C18D36A00D58C1C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47262C18D36A00D58C1C /* InfoView.swift */; };
 		716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47292C18D9C400D58C1C /* LocalSearchService.swift */; };
 		716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */; };
+		7192034F2C1A408600A35654 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192034E2C1A408600A35654 /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		716F47262C18D36A00D58C1C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		716F47292C18D9C400D58C1C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
 		716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchResponse.swift; sourceTree = "<group>"; };
+		7192034E2C1A408600A35654 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				716F47292C18D9C400D58C1C /* LocalSearchService.swift */,
+				7192034E2C1A408600A35654 /* Services.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				716D32322C1646DF00802D05 /* AppService.swift in Sources */,
 				716D321B2C16306A00802D05 /* Country.swift in Sources */,
 				716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */,
+				7192034F2C1A408600A35654 /* Services.swift in Sources */,
 				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
 				716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */,
 				716D32142C1617AC00802D05 /* APIError.swift in Sources */,

@@ -24,17 +24,23 @@ struct SearchView: View {
                 InfoView(state: .loading)
 
             case let .loaded(searchResponse):
-                ForEach(searchResponse.mapItems, id: \.self) { mapItem in
-                    Text(mapItem.name ?? "")
+                List(searchResponse.mapItems, id: \.self) { mapItem in
+                    VStack(alignment: .leading) {
+                        Text(mapItem.title ?? "")
+                        Text(mapItem.subtitle ?? "")
+                    }
+                    .padding()
                 }
+                .listStyle(.plain)
 
             case .error:
                 InfoView(state: .error("Keine Adresse gefunden", "xmark.circle.fill"))
             }
         }
         .searchable(text: $store.searchText, prompt: "Adresse eingeben")
-
-        
+        .onAppear {
+            store.send(.subscribeToSearchResultChanges)
+        }
 
 //        Map(
 //            bounds: .init(

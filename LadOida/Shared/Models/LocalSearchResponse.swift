@@ -8,9 +8,9 @@
 import MapKit
 
 public struct LocalSearchResponse: Equatable, Codable {
-    let mapItems: [MKMapItem]
+    let mapItems: [MKLocalSearchCompletion]
 
-    public init(mapItems: [MKMapItem]) {
+    public init(mapItems: [MKLocalSearchCompletion]) {
         self.mapItems = mapItems
     }
 

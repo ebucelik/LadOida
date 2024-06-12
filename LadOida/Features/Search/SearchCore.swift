@@ -7,6 +7,7 @@
 
 import Foundation
 import ComposableArchitecture
+import Combine
 
 @Reducer
 public struct SearchCore {
@@ -18,6 +19,7 @@ public struct SearchCore {
 
     public enum Action: BindableAction {
         case searchAddress
+        case subscribeToSearchResultChanges
         case setSearchResult(ViewState<LocalSearchResponse>)
         case binding(BindingAction<State>)
     }
@@ -35,18 +37,25 @@ public struct SearchCore {
         
         Reduce { state, action in
             switch action {
+            case .subscribeToSearchResultChanges:
+                return .run { send in
+                    for await searchResults in self.searchService.searchResultsChanged {
+                        if let searchResults {
+                            await send(.setSearchResult(.loaded(searchResults)))
+                        }
+                    }
+                }
+                
             case .searchAddress:
                 guard state.searchText.count > 4 else { return .none }
-                
+
                 return .run { [state = state] send in
                     await send(.setSearchResult(.loading))
 
-                    let searchResult = try await self.searchService.request(
+                    self.searchService.request(
                         resultType: .address,
                         searchText: state.searchText
                     )
-
-                    await send(.setSearchResult(.loaded(searchResult)))
                 } catch: { error, send in
                     await send(.setSearchResult(.error(error)))
                 }

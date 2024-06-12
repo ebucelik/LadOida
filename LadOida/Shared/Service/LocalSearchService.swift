@@ -6,42 +6,66 @@
 //
 
 import MapKit
+import Combine
 
 protocol LocalSearchServiceProtocol {
-    func request(resultType: MKLocalSearch.ResultType, searchText: String) async throws -> LocalSearchResponse
+    func request(resultType: MKLocalSearchCompleter.ResultType, searchText: String)
+    var searchResultsChanged: AsyncStream<LocalSearchResponse?> { get }
 }
 
-class LocalSearchService: LocalSearchServiceProtocol {
-    let lat: Double
-    let lng: Double
+class LocalSearchService: NSObject, LocalSearchServiceProtocol {
+
+    private lazy var localSearchCompleter = MKLocalSearchCompleter()
+    private let lat: Double
+    private let lng: Double
+
+    @Published private var searchResults: LocalSearchResponse?
+    private var cancellable: AnyCancellable?
+
+    var searchResultsChanged: AsyncStream<LocalSearchResponse?> {
+        return AsyncStream { continuation in
+            cancellable = $searchResults.sink { searchResults in
+                continuation.yield(searchResults)
+            }
+        }
+    }
 
     init(lat: Double, lng: Double) {
         self.lat = lat
         self.lng = lng
+
+        super.init()
+
+        self.localSearchCompleter.delegate = self
     }
 
-    // TODO: Adapt search with corelocation!
     func request(
-        resultType: MKLocalSearch.ResultType,
+        resultType: MKLocalSearchCompleter.ResultType,
         searchText: String
-    ) async throws -> LocalSearchResponse {
-        let request = MKLocalSearch.Request()
-
-        request.naturalLanguageQuery = searchText
-        request.pointOfInterestFilter = .includingAll
-        request.resultTypes = resultType
-        request.region = MKCoordinateRegion(
+    ) {
+        localSearchCompleter.resultTypes = resultType
+        localSearchCompleter.pointOfInterestFilter = .includingAll
+        localSearchCompleter.region =  MKCoordinateRegion(
             center: CLLocationCoordinate2D(
                 latitude: lat,
                 longitude: lng
             ),
             span: MKCoordinateSpan()
         )
+        localSearchCompleter.cancel()
 
-        let search = MKLocalSearch(request: request)
+        DispatchQueue.main.async {
+            self.localSearchCompleter.queryFragment = searchText
+        }
+    }
+}
 
-        let response = try await search.start()
+extension LocalSearchService: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = LocalSearchResponse(mapItems: completer.results)
+    }
 
-        return LocalSearchResponse(mapItems: response.mapItems)
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: any Error) {
+        print(error.localizedDescription)
     }
 }
