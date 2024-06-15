@@ -24,6 +24,7 @@ struct LadOidaApp: App {
                         }
                     )
                 )
+                .preferredColorScheme(.light)
 
                 GeometryReader { reader in
                     AppColors.color(.primary)
