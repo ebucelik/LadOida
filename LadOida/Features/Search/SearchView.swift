@@ -24,23 +24,68 @@ struct SearchView: View {
                 InfoView(state: .loading)
 
             case let .loaded(searchResponse):
-                List(searchResponse.mapItems, id: \.self) { mapItem in
-                    VStack(alignment: .leading) {
-                        Text(mapItem.title ?? "")
-                        Text(mapItem.subtitle ?? "")
+                if searchResponse.mapItems.isEmpty {
+                    InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
+                } else {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("\(searchResponse.mapItems.count) Adressen gefunden")
+                            .font(AppFonts.bold(.body2))
+                            .padding()
+
+                        SpacerView(height: 1)
+
+                        List(searchResponse.mapItems, id: \.self) { mapItem in
+                            VStack(alignment: .leading, spacing: 0) {
+                                Button {
+                                    store.send(.setSelectedAddress(mapItem))
+                                } label: {
+                                    SearchItemView(
+                                        localSearchCompletion: mapItem,
+                                        isSelected: store.selectedAddress == mapItem
+                                    )
+                                        .tag(mapItem)
+                                }
+
+                                SpacerView(height: 2)
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets())
+                        }
+                        .listStyle(.plain)
+
+                        if let selectedAddress = store.selectedAddress {
+                            Button {
+                                print("Test")
+                            } label: {
+                                HStack(alignment: .center) {
+                                    VStack {
+                                        Text("Ladestellen in \(selectedAddress.title) anzeigen")
+                                            .font(AppFonts.bold(.body))
+                                            .foregroundStyle(.white)
+                                            .frame(maxWidth: .infinity)
+                                    }
+
+                                    Image(systemName: "arrow.right.circle.fill")
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .tint(.white)
+                                }
+                                .padding()
+                                .background(AppColors.color(.primary))
+                            }
+                        }
                     }
-                    .padding()
                 }
-                .listStyle(.plain)
 
             case .error:
-                InfoView(state: .error("Keine Adresse gefunden", "xmark.circle.fill"))
+                InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
             }
         }
-        .searchable(text: $store.searchText, prompt: "Adresse eingeben")
         .onAppear {
             store.send(.subscribeToSearchResultChanges)
         }
+        .searchable(text: $store.searchText, prompt: "Adresse eingeben")
 
 //        Map(
 //            bounds: .init(

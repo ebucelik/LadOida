@@ -13,21 +13,39 @@ struct AppView: View {
     let store: StoreOf<AppCore>
 
     var body: some View {
-        NavigationStack {
+        ZStack {
             if store.allMetaDataLoaded {
-                TabView {
-                    SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
-                        .tabItem {
-                            Label("Search Stations", systemImage: "sparkle.magnifyingglass")
-                        }
+                NavigationStack {
+                    TabView {
+                        SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
+                            .tabItem {
+                                Label("Search Stations", systemImage: "sparkle.magnifyingglass")
+                            }
+                    }
+                    .navigationTitle("LAD OIDA")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .tint(AppColors.color(.primary))
                 }
-                .navigationTitle("LAD OIDA")
-                .navigationBarTitleDisplayMode(.inline)
             } else {
-                Label("LAD OIDA", systemImage: "bolt.batteryblock")
+                VStack {
+                    Spacer()
+
+                    Label("LAD OIDA", systemImage: "bolt.batteryblock")
+                        .frame(maxWidth: .infinity)
+                        .font(AppFonts.bold(.title))
+
+                    Spacer()
+                }
+                .background(AppColors.color(.primary))
             }
         }
         .onAppear {
+            UINavigationBar.appearance().backgroundColor = AppColors.color(.primary)
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
+            UISearchBar.appearance().tintColor = .white
+            UITabBar.appearance().isTranslucent = false
+
             store.send(.onViewAppear)
         }
     }

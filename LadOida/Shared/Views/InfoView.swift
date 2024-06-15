@@ -37,7 +37,7 @@ public struct InfoView: View {
                 ProgressView().progressViewStyle(.circular)
 
                 Text("Loading...")
-                    .font(.caption)
+                    .font(AppFonts.regular(.body1))
 
                 Spacer()
             }
@@ -53,12 +53,12 @@ public struct InfoView: View {
             Spacer()
 
             Text(message)
-                .font(.title2)
+                .font(AppFonts.regular(.title2))
                 .frame(maxWidth: .infinity, alignment: .center)
 
             Image(systemName: systemImageName)
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(width: 80, height: 80)
 
             Spacer()
         }

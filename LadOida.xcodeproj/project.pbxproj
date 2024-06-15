@@ -12,6 +12,14 @@
 		7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDA2C16006F00DE71AD /* Assets.xcassets */; };
 		7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDE42C16029600DE71AD /* APISecretKey.swift */; };
 		7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7102FDE72C16052000DE71AD /* ComposableArchitecture */; };
+		713A06882C1DE600006E1502 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06872C1DE600006E1502 /* AppColors.swift */; };
+		713A068B2C1DE9CC006E1502 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A068A2C1DE9CC006E1502 /* UIColor+Extensions.swift */; };
+		713A068D2C1DECC6006E1502 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A068C2C1DECC6006E1502 /* SearchItemView.swift */; };
+		713A068F2C1DF78E006E1502 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A068E2C1DF78E006E1502 /* AppFonts.swift */; };
+		713A06932C1DF8CF006E1502 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 713A06922C1DF8A9006E1502 /* Montserrat-Bold.ttf */; };
+		713A06942C1DF8CF006E1502 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 713A06912C1DF8A9006E1502 /* Montserrat-Regular.ttf */; };
+		713A06972C1E021F006E1502 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06962C1E021F006E1502 /* SpacerView.swift */; };
+		713A06992C1E14F6006E1502 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06982C1E14F6006E1502 /* RadioButtonView.swift */; };
 		716D32092C16071700802D05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716D32072C16071700802D05 /* Preview Assets.xcassets */; };
 		716D320D2C16076E00802D05 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320C2C16076E00802D05 /* APIClient.swift */; };
 		716D32102C16083200802D05 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320F2C16083200802D05 /* Call.swift */; };
@@ -48,6 +56,15 @@
 		7102FDD82C16006E00DE71AD /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		7102FDDA2C16006F00DE71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7102FDE42C16029600DE71AD /* APISecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecretKey.swift; sourceTree = "<group>"; };
+		713A06872C1DE600006E1502 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		713A068A2C1DE9CC006E1502 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		713A068C2C1DECC6006E1502 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
+		713A068E2C1DF78E006E1502 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		713A06912C1DF8A9006E1502 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../Downloads/montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		713A06922C1DF8A9006E1502 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../../Downloads/montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		713A06952C1DF8FE006E1502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		713A06962C1E021F006E1502 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
+		713A06982C1E14F6006E1502 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		716D32072C16071700802D05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		716D320C2C16076E00802D05 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		716D320F2C16083200802D05 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
@@ -109,6 +126,7 @@
 		7102FDD52C16006E00DE71AD /* LadOida */ = {
 			isa = PBXGroup;
 			children = (
+				713A06952C1DF8FE006E1502 /* Info.plist */,
 				716D320E2C1607A700802D05 /* Shared */,
 				716D320B2C16075A00802D05 /* Network */,
 				716D320A2C16073C00802D05 /* Features */,
@@ -122,6 +140,23 @@
 				716D32082C16071700802D05 /* Preview Content */,
 			);
 			path = LadOida;
+			sourceTree = "<group>";
+		};
+		713A06892C1DE9BF006E1502 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				713A068A2C1DE9CC006E1502 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		713A06902C1DF89C006E1502 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				713A06922C1DF8A9006E1502 /* Montserrat-Bold.ttf */,
+				713A06912C1DF8A9006E1502 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		716D32082C16071700802D05 /* Preview Content */ = {
@@ -155,9 +190,13 @@
 		716D320E2C1607A700802D05 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				713A06902C1DF89C006E1502 /* Fonts */,
+				713A06892C1DE9BF006E1502 /* Extensions */,
 				716F47282C18D9B900D58C1C /* Service */,
 				716F47252C18D36100D58C1C /* Views */,
 				716D32172C162F5300802D05 /* Models */,
+				713A06872C1DE600006E1502 /* AppColors.swift */,
+				713A068E2C1DF78E006E1502 /* AppFonts.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -188,6 +227,7 @@
 			children = (
 				716D32392C16505000802D05 /* SearchView.swift */,
 				716F47232C18D02A00D58C1C /* SearchCore.swift */,
+				713A068C2C1DECC6006E1502 /* SearchItemView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -196,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				716F47262C18D36A00D58C1C /* InfoView.swift */,
+				713A06962C1E021F006E1502 /* SpacerView.swift */,
+				713A06982C1E14F6006E1502 /* RadioButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +317,8 @@
 			files = (
 				716D32092C16071700802D05 /* Preview Assets.xcassets in Resources */,
 				7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */,
+				713A06932C1DF8CF006E1502 /* Montserrat-Bold.ttf in Resources */,
+				713A06942C1DF8CF006E1502 /* Montserrat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +337,7 @@
 				716D321D2C16312200802D05 /* ProximitySearchStation.swift in Sources */,
 				716D32122C16085200802D05 /* HTTPMethod.swift in Sources */,
 				716F47272C18D36A00D58C1C /* InfoView.swift in Sources */,
+				713A068D2C1DECC6006E1502 /* SearchItemView.swift in Sources */,
 				716D32102C16083200802D05 /* Call.swift in Sources */,
 				716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */,
 				716D32342C16477E00802D05 /* ConnectorType.swift in Sources */,
@@ -303,16 +348,21 @@
 				716D320D2C16076E00802D05 /* APIClient.swift in Sources */,
 				716D323A2C16505000802D05 /* SearchView.swift in Sources */,
 				716F47242C18D02A00D58C1C /* SearchCore.swift in Sources */,
+				713A068B2C1DE9CC006E1502 /* UIColor+Extensions.swift in Sources */,
 				716D322B2C1638A500802D05 /* GeneralSearchLocation.swift in Sources */,
 				716D32302C16448200802D05 /* AppCore.swift in Sources */,
 				716D32382C16481E00802D05 /* AppCalls.swift in Sources */,
 				716D32162C161DF100802D05 /* ViewState.swift in Sources */,
 				716D32322C1646DF00802D05 /* AppService.swift in Sources */,
 				716D321B2C16306A00802D05 /* Country.swift in Sources */,
+				713A068F2C1DF78E006E1502 /* AppFonts.swift in Sources */,
 				716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */,
+				713A06972C1E021F006E1502 /* SpacerView.swift in Sources */,
 				7192034F2C1A408600A35654 /* Services.swift in Sources */,
+				713A06992C1E14F6006E1502 /* RadioButtonView.swift in Sources */,
 				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
 				716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */,
+				713A06882C1DE600006E1502 /* AppColors.swift in Sources */,
 				716D32142C1617AC00802D05 /* APIError.swift in Sources */,
 				716D32292C16387C00802D05 /* GeneralSearchPoint.swift in Sources */,
 			);
@@ -451,6 +501,7 @@
 				DEVELOPMENT_TEAM = 7UZH6B548Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LadOida/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lad Oida";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -487,6 +538,7 @@
 				DEVELOPMENT_TEAM = 7UZH6B548Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LadOida/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lad Oida";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

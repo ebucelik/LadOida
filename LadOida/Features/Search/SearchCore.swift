@@ -8,6 +8,7 @@
 import Foundation
 import ComposableArchitecture
 import Combine
+import MapKit
 
 @Reducer
 public struct SearchCore {
@@ -15,12 +16,14 @@ public struct SearchCore {
     public struct State: Equatable {
         var searchText: String = ""
         var searchResult: ViewState<LocalSearchResponse> = .none
+        var selectedAddress: MKLocalSearchCompletion?
     }
 
     public enum Action: BindableAction {
         case searchAddress
         case subscribeToSearchResultChanges
         case setSearchResult(ViewState<LocalSearchResponse>)
+        case setSelectedAddress(MKLocalSearchCompletion)
         case binding(BindingAction<State>)
     }
 
@@ -49,6 +52,8 @@ public struct SearchCore {
             case .searchAddress:
                 guard state.searchText.count > 4 else { return .none }
 
+                state.selectedAddress = nil
+
                 return .run { [state = state] send in
                     await send(.setSearchResult(.loading))
 
@@ -67,6 +72,11 @@ public struct SearchCore {
 
             case let .setSearchResult(stateChanged):
                 state.searchResult = stateChanged
+
+                return .none
+
+            case let .setSelectedAddress(localSearchCompletion):
+                state.selectedAddress = localSearchCompletion
 
                 return .none
 

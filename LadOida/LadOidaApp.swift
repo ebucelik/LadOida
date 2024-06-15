@@ -12,17 +12,25 @@ import ComposableArchitecture
 struct LadOidaApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView(
-                store: Store(
-                    initialState: AppCore.State(),
-                    reducer: {
-                        AppCore(
-                            service: Services.appService,
-                            searchService: Services.searchService
-                        )
-                    }
+            ZStack {
+                AppView(
+                    store: Store(
+                        initialState: AppCore.State(),
+                        reducer: {
+                            AppCore(
+                                service: Services.appService,
+                                searchService: Services.searchService
+                            )
+                        }
+                    )
                 )
-            )
+
+                GeometryReader { reader in
+                    AppColors.color(.primary)
+                        .frame(height: reader.safeAreaInsets.top, alignment: .top)
+                        .ignoresSafeArea()
+                }
+            }
         }
     }
 }
