@@ -48,6 +48,8 @@
 		716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47292C18D9C400D58C1C /* LocalSearchService.swift */; };
 		716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */; };
 		7192034F2C1A408600A35654 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192034E2C1A408600A35654 /* Services.swift */; };
+		71DA67EB2C1F33FC0040CE65 /* SearchCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */; };
+		71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EC2C1F353E0040CE65 /* SearchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		716F47292C18D9C400D58C1C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
 		716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchResponse.swift; sourceTree = "<group>"; };
 		7192034E2C1A408600A35654 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCalls.swift; sourceTree = "<group>"; };
+		71DA67EC2C1F353E0040CE65 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,8 @@
 				716D32392C16505000802D05 /* SearchView.swift */,
 				716F47232C18D02A00D58C1C /* SearchCore.swift */,
 				713A068C2C1DECC6006E1502 /* SearchItemView.swift */,
+				71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */,
+				71DA67EC2C1F353E0040CE65 /* SearchService.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -342,7 +348,9 @@
 				716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */,
 				716D32342C16477E00802D05 /* ConnectorType.swift in Sources */,
 				716D32192C162F6C00802D05 /* AuthenticationMode.swift in Sources */,
+				71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */,
 				716D32252C1633C000802D05 /* ProximitySearchPoint.swift in Sources */,
+				71DA67EB2C1F33FC0040CE65 /* SearchCalls.swift in Sources */,
 				7102FDD72C16006E00DE71AD /* LadOidaApp.swift in Sources */,
 				716D32362C1647BF00802D05 /* VehicleType.swift in Sources */,
 				716D320D2C16076E00802D05 /* APIClient.swift in Sources */,

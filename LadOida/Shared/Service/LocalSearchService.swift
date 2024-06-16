@@ -10,7 +10,7 @@ import Combine
 
 protocol LocalSearchServiceProtocol {
     func request(resultType: MKLocalSearchCompleter.ResultType, searchText: String)
-    func searchRequest(localSearchCompletion: MKLocalSearchCompletion) async throws
+    func searchRequest(localSearchCompletion: MKLocalSearchCompletion) async throws -> MKPlacemark?
     var searchResultsChanged: AsyncStream<LocalSearchResponse?> { get }
 }
 
@@ -60,21 +60,13 @@ class LocalSearchService: NSObject, LocalSearchServiceProtocol {
         }
     }
 
-    func searchRequest(localSearchCompletion: MKLocalSearchCompletion) async throws {
+    func searchRequest(localSearchCompletion: MKLocalSearchCompletion) async throws -> MKPlacemark? {
         let request = MKLocalSearch.Request(completion: localSearchCompletion)
         let search = MKLocalSearch(request: request)
 
         let response = try await search.start()
 
-        for mapItem in response.mapItems {
-            print(mapItem.placemark.coordinate)
-            print(mapItem.placemark.postalCode)
-            print(mapItem.placemark.country)
-            print(mapItem.placemark.countryCode)
-            print(mapItem.placemark.title)
-            print(mapItem.placemark.subtitle)
-            print(mapItem.placemark.locality)
-        }
+        return response.mapItems.first?.placemark
     }
 }
 

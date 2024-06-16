@@ -32,3 +32,9 @@ public enum ViewState<Item: Codable & Equatable>: Equatable {
         }
     }
 }
+
+extension ViewState {
+    var isLoading: Bool {
+        self == .loading
+    }
+}

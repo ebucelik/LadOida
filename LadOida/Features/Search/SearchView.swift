@@ -58,10 +58,12 @@ struct SearchView: View {
                             .listRowInsets(EdgeInsets())
                         }
                         .listStyle(.plain)
+                        .disabled(store.searchStations.isLoading)
+                        .opacity(store.searchStations.isLoading ? 0.8 : 1)
 
                         if let selectedAddress = store.selectedAddress {
                             Button {
-                                store.send(.searchStationsToAddress)
+                                store.send(.searchStationsWithAddress)
                             } label: {
                                 HStack(alignment: .center) {
                                     VStack {
@@ -71,15 +73,21 @@ struct SearchView: View {
                                             .frame(maxWidth: .infinity)
                                     }
 
-                                    Image(systemName: "arrow.right.circle.fill")
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .frame(width: 24, height: 24)
-                                        .tint(.white)
+                                    if store.searchStations.isLoading {
+                                        ProgressView().progressViewStyle(.circular)
+                                    } else {
+                                        Image(systemName: "arrow.right.circle.fill")
+                                            .renderingMode(.template)
+                                            .resizable()
+                                            .frame(width: 24, height: 24)
+                                            .tint(.white)
+                                    }
                                 }
                                 .padding()
                                 .background(AppColors.color(.primary))
                             }
+                            .disabled(store.searchStations.isLoading)
+                            .opacity(store.searchStations.isLoading ? 0.8 : 1)
                         }
                     }
                 }

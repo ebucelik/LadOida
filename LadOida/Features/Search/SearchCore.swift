@@ -17,20 +17,27 @@ public struct SearchCore {
         var searchText: String = ""
         var searchResult: ViewState<LocalSearchResponse> = .none
         var selectedAddress: MKLocalSearchCompletion?
+        var searchStations: ViewState<GeneralSearchStationResult> = .none
     }
 
     public enum Action: BindableAction {
         case searchAddress
-        case searchStationsToAddress
+        case searchStationsWithAddress
         case subscribeToSearchResultChanges
         case setSearchResult(ViewState<LocalSearchResponse>)
         case setSelectedAddress(MKLocalSearchCompletion)
+        case setSearchStations(ViewState<GeneralSearchStationResult>)
         case binding(BindingAction<State>)
     }
 
-    let searchService: LocalSearchServiceProtocol
+    let localSearchService: LocalSearchServiceProtocol
+    let searchService: SearchServiceProtocol
 
-    init(searchService: LocalSearchServiceProtocol) {
+    init(
+        localSearchService: LocalSearchServiceProtocol,
+        searchService: SearchServiceProtocol
+    ) {
+        self.localSearchService = localSearchService
         self.searchService = searchService
     }
 
@@ -43,7 +50,7 @@ public struct SearchCore {
             switch action {
             case .subscribeToSearchResultChanges:
                 return .run { send in
-                    for await searchResults in self.searchService.searchResultsChanged {
+                    for await searchResults in self.localSearchService.searchResultsChanged {
                         if let searchResults {
                             await send(.setSearchResult(.loaded(searchResults)))
                         }
@@ -58,7 +65,7 @@ public struct SearchCore {
                 return .run { [state = state] send in
                     await send(.setSearchResult(.loading))
 
-                    self.searchService.request(
+                    self.localSearchService.request(
                         resultType: .address,
                         searchText: state.searchText
                     )
@@ -71,11 +78,29 @@ public struct SearchCore {
                     scheduler: DispatchQueue.main.eraseToAnyScheduler()
                 )
 
-            case .searchStationsToAddress:
+            case .searchStationsWithAddress:
                 guard let selectedAddress = state.selectedAddress else { return .none }
 
                 return .run { send in
-                    try await self.searchService.searchRequest(localSearchCompletion: selectedAddress)
+                    await send(.setSearchStations(.loading))
+
+                    guard let placemark = try await self.localSearchService.searchRequest(
+                        localSearchCompletion: selectedAddress
+                    ) else {
+                        await send(.setSearchStations(.error(APIError.responseError)))
+
+                        return
+                    }
+
+                    let searchStations = try await self.searchService.searchStations(
+                        lat: placemark.coordinate.latitude,
+                        lng: placemark.coordinate.longitude,
+                        postalCode: placemark.postalCode
+                    )
+
+                    await send(.setSearchStations(.loaded(searchStations)))
+                } catch: { error, send in
+                    await send(.setSearchStations(.error(error)))
                 }
 
             case let .setSearchResult(stateChanged):
@@ -85,6 +110,15 @@ public struct SearchCore {
 
             case let .setSelectedAddress(localSearchCompletion):
                 state.selectedAddress = localSearchCompletion
+
+                return .none
+
+            case let .setSearchStations(searchStations):
+                state.searchStations = searchStations
+
+                if case let .loaded(stations) = searchStations {
+                    print(stations)
+                }
 
                 return .none
 

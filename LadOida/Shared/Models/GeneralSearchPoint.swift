@@ -17,9 +17,9 @@ public struct GeneralSearchPoint: Codable, Equatable {
     public let priceInCentPerKwh: Double?
     public let priceInCentPerMin: Double?
     public let status: String?
-    public let authenticationMode: [String]
-    public let connectorType: [String]
-    public let vehicleType: [String]
+    public let authenticationModes: [String]
+    public let connectorTypes: [String]
+    public let vehicleTypes: [String]
 
     init(
         `public`: Bool?,
@@ -31,9 +31,9 @@ public struct GeneralSearchPoint: Codable, Equatable {
         priceInCentPerKwh: Double?,
         priceInCentPerMin: Double?,
         status: String?,
-        authenticationMode: [String],
-        connectorType: [String],
-        vehicleType: [String]
+        authenticationModes: [String],
+        connectorTypes: [String],
+        vehicleTypes: [String]
     ) {
         self.public = `public`
         self.evseId = evseId
@@ -44,8 +44,8 @@ public struct GeneralSearchPoint: Codable, Equatable {
         self.priceInCentPerKwh = priceInCentPerKwh
         self.priceInCentPerMin = priceInCentPerMin
         self.status = status
-        self.authenticationMode = authenticationMode
-        self.connectorType = connectorType
-        self.vehicleType = vehicleType
+        self.authenticationModes = authenticationModes
+        self.connectorTypes = connectorTypes
+        self.vehicleTypes = vehicleTypes
     }
 }

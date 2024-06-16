@@ -19,6 +19,7 @@ struct LadOidaApp: App {
                         reducer: {
                             AppCore(
                                 service: Services.appService,
+                                localSearchService: Services.localSearchService,
                                 searchService: Services.searchService
                             )
                         }
