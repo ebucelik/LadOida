@@ -22,7 +22,7 @@ struct AppView: View {
                                 Label("Search Stations", systemImage: "sparkle.magnifyingglass")
                             }
                     }
-                    .navigationTitle("LAD OIDA")
+                    .navigationTitle("Lad Oida")
                     .navigationBarTitleDisplayMode(.inline)
                     .tint(AppColors.color(.primary))
                 }
@@ -30,7 +30,7 @@ struct AppView: View {
                 VStack {
                     Spacer()
 
-                    Label("LAD OIDA", systemImage: "bolt.batteryblock")
+                    Label("Lad Oida", systemImage: "bolt.batteryblock")
                         .frame(maxWidth: .infinity)
                         .font(AppFonts.bold(.title))
 
@@ -41,6 +41,7 @@ struct AppView: View {
         }
         .onAppear {
             UINavigationBar.appearance().backgroundColor = AppColors.color(.primary)
+            UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .white
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
             UISearchBar.appearance().tintColor = .white

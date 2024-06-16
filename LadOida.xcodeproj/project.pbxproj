@@ -50,6 +50,8 @@
 		7192034F2C1A408600A35654 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192034E2C1A408600A35654 /* Services.swift */; };
 		71DA67EB2C1F33FC0040CE65 /* SearchCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */; };
 		71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EC2C1F353E0040CE65 /* SearchService.swift */; };
+		71DA67F02C1F6BE30040CE65 /* StationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EF2C1F6BE30040CE65 /* StationsMapView.swift */; };
+		71DA67F22C1F6D2D0040CE65 /* StationsMapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67F12C1F6D2D0040CE65 /* StationsMapCore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,8 @@
 		7192034E2C1A408600A35654 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCalls.swift; sourceTree = "<group>"; };
 		71DA67EC2C1F353E0040CE65 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		71DA67EF2C1F6BE30040CE65 /* StationsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsMapView.swift; sourceTree = "<group>"; };
+		71DA67F12C1F6D2D0040CE65 /* StationsMapCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsMapCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 		716D320A2C16073C00802D05 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				71DA67EE2C1F6BCD0040CE65 /* StationsMap */,
 				716D322E2C16415300802D05 /* Search */,
 			);
 			path = Features;
@@ -255,6 +260,15 @@
 				7192034E2C1A408600A35654 /* Services.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		71DA67EE2C1F6BCD0040CE65 /* StationsMap */ = {
+			isa = PBXGroup;
+			children = (
+				71DA67EF2C1F6BE30040CE65 /* StationsMapView.swift */,
+				71DA67F12C1F6D2D0040CE65 /* StationsMapCore.swift */,
+			);
+			path = StationsMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,11 +355,13 @@
 				716D32212C16330C00802D05 /* OpeningHours.swift in Sources */,
 				7102FDD92C16006E00DE71AD /* AppView.swift in Sources */,
 				716D321D2C16312200802D05 /* ProximitySearchStation.swift in Sources */,
+				71DA67F02C1F6BE30040CE65 /* StationsMapView.swift in Sources */,
 				716D32122C16085200802D05 /* HTTPMethod.swift in Sources */,
 				716F47272C18D36A00D58C1C /* InfoView.swift in Sources */,
 				713A068D2C1DECC6006E1502 /* SearchItemView.swift in Sources */,
 				716D32102C16083200802D05 /* Call.swift in Sources */,
 				716D32232C16338C00802D05 /* OpeningHourDetail.swift in Sources */,
+				71DA67F22C1F6D2D0040CE65 /* StationsMapCore.swift in Sources */,
 				716D32342C16477E00802D05 /* ConnectorType.swift in Sources */,
 				716D32192C162F6C00802D05 /* AuthenticationMode.swift in Sources */,
 				71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */,

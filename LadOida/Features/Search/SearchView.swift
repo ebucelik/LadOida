@@ -58,8 +58,8 @@ struct SearchView: View {
                             .listRowInsets(EdgeInsets())
                         }
                         .listStyle(.plain)
-                        .disabled(store.searchStations.isLoading)
-                        .opacity(store.searchStations.isLoading ? 0.8 : 1)
+                        .disabled(store.searchStationResult.isLoading)
+                        .opacity(store.searchStationResult.isLoading ? 0.8 : 1)
 
                         if let selectedAddress = store.selectedAddress {
                             Button {
@@ -73,7 +73,7 @@ struct SearchView: View {
                                             .frame(maxWidth: .infinity)
                                     }
 
-                                    if store.searchStations.isLoading {
+                                    if store.searchStationResult.isLoading {
                                         ProgressView().progressViewStyle(.circular)
                                     } else {
                                         Image(systemName: "arrow.right.circle.fill")
@@ -86,8 +86,8 @@ struct SearchView: View {
                                 .padding()
                                 .background(AppColors.color(.primary))
                             }
-                            .disabled(store.searchStations.isLoading)
-                            .opacity(store.searchStations.isLoading ? 0.8 : 1)
+                            .disabled(store.searchStationResult.isLoading)
+                            .opacity(store.searchStationResult.isLoading ? 0.8 : 1)
                         }
                     }
                 }
@@ -100,20 +100,13 @@ struct SearchView: View {
             store.send(.subscribeToSearchResultChanges)
         }
         .searchable(text: $store.searchText, prompt: "Adresse eingeben")
-
-//        Map(
-//            bounds: .init(
-//                centerCoordinateBounds: .init(
-//                    center: .init(
-//                        latitude: 47.6964719,
-//                        longitude: 13.3457347
-//                    ),
-//                    span: .init()
-//                )
-//            )
-//        ) {
-//
-//        }
-//        .mapControlVisibility(.hidden)
+        .navigationDestination(
+            item: $store.scope(
+                state: \.stationsMapState,
+                action: \.stationsMapAction
+            )
+        ) { stationsMapStore in
+            StationsMapView(store: stationsMapStore)
+        }
     }
 }

@@ -17,7 +17,10 @@ public struct SearchCore {
         var searchText: String = ""
         var searchResult: ViewState<LocalSearchResponse> = .none
         var selectedAddress: MKLocalSearchCompletion?
-        var searchStations: ViewState<GeneralSearchStationResult> = .none
+        var searchStationResult: ViewState<GeneralSearchStationResult> = .none
+
+        @Presents
+        var stationsMapState: StationsMapCore.State?
     }
 
     public enum Action: BindableAction {
@@ -28,6 +31,9 @@ public struct SearchCore {
         case setSelectedAddress(MKLocalSearchCompletion)
         case setSearchStations(ViewState<GeneralSearchStationResult>)
         case binding(BindingAction<State>)
+        case showStationsMapView(GeneralSearchStationResult)
+
+        case stationsMapAction(PresentationAction<StationsMapCore.Action>)
     }
 
     let localSearchService: LocalSearchServiceProtocol
@@ -113,11 +119,11 @@ public struct SearchCore {
 
                 return .none
 
-            case let .setSearchStations(searchStations):
-                state.searchStations = searchStations
+            case let .setSearchStations(searchStationResultChanged):
+                state.searchStationResult = searchStationResultChanged
 
-                if case let .loaded(stations) = searchStations {
-                    print(stations)
+                if case let .loaded(searchStationResult) = searchStationResultChanged {
+                    return .send(.showStationsMapView(searchStationResult))
                 }
 
                 return .none
@@ -127,7 +133,23 @@ public struct SearchCore {
 
             case .binding:
                 return .none
+
+            case let .showStationsMapView(searchStationResult):
+                state.stationsMapState = StationsMapCore.State(searchStationResult: searchStationResult)
+
+                return .none
+
+            case .stationsMapAction(.presented):
+                return .none
+
+            case .stationsMapAction(.dismiss):
+                state.stationsMapState = nil
+
+                return .none
             }
+        }
+        .ifLet(\.$stationsMapState, action: \.stationsMapAction) {
+            StationsMapCore()
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct GeneralSearchStation: Codable, Equatable {
+public struct GeneralSearchStation: Codable, Equatable, Hashable {
     public let `public`: Bool?
     public let evseCountryId: String?
     public let evseOperatorId: String?
@@ -77,5 +77,11 @@ public struct GeneralSearchStation: Codable, Equatable {
         self.openingHours = openingHours
         self.priceUrl = priceUrl
         self.points = points
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(evseCountryId)
+        hasher.combine(evseOperatorId)
+        hasher.combine(evseStationId)
     }
 }
