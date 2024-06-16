@@ -28,15 +28,25 @@ struct SearchView: View {
                     InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
                 } else {
                     VStack(alignment: .leading, spacing: 0) {
-                        if searchResponse.mapItems.count == 1 {
-                            Text("\(searchResponse.mapItems.count) Adresse gefunden")
-                                .font(AppFonts.bold(.body2))
-                                .padding()
-                        } else {
-                            Text("\(searchResponse.mapItems.count) Adressen gefunden")
-                                .font(AppFonts.bold(.body2))
-                                .padding()
+                        HStack {
+                            if searchResponse.mapItems.count == 1 {
+                                Text("\(searchResponse.mapItems.count) Adresse gefunden")
+                                    .font(AppFonts.bold(.body2))
+                            } else {
+                                Text("\(searchResponse.mapItems.count) Adressen gefunden")
+                                    .font(AppFonts.bold(.body2))
+                            }
+
+                            Spacer()
+
+                            Button(role: .cancel) {
+                                store.send(.reset)
+                            } label: {
+                                Text("Zurücksetzen")
+                                    .font(AppFonts.bold(.body2))
+                            }
                         }
+                        .padding()
 
                         SpacerView(height: 1)
 

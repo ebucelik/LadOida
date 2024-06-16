@@ -32,6 +32,7 @@ public struct SearchCore {
         case setSearchStations(ViewState<GeneralSearchStationResult>)
         case binding(BindingAction<State>)
         case showStationsMapView(GeneralSearchStationResult)
+        case reset
 
         case stationsMapAction(PresentationAction<StationsMapCore.Action>)
     }
@@ -132,6 +133,14 @@ public struct SearchCore {
                 return .send(.searchAddress)
 
             case .binding:
+                return .none
+
+            case .reset:
+                state.searchText = ""
+                state.searchResult = .none
+                state.selectedAddress = nil
+                state.searchStationResult = .none
+
                 return .none
 
             case let .showStationsMapView(searchStationResult):
