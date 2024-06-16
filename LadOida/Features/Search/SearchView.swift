@@ -28,9 +28,15 @@ struct SearchView: View {
                     InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
                 } else {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("\(searchResponse.mapItems.count) Adressen gefunden")
-                            .font(AppFonts.bold(.body2))
-                            .padding()
+                        if searchResponse.mapItems.count == 1 {
+                            Text("\(searchResponse.mapItems.count) Adresse gefunden")
+                                .font(AppFonts.bold(.body2))
+                                .padding()
+                        } else {
+                            Text("\(searchResponse.mapItems.count) Adressen gefunden")
+                                .font(AppFonts.bold(.body2))
+                                .padding()
+                        }
 
                         SpacerView(height: 1)
 
@@ -55,7 +61,7 @@ struct SearchView: View {
 
                         if let selectedAddress = store.selectedAddress {
                             Button {
-                                print("Test")
+                                store.send(.searchStationsToAddress)
                             } label: {
                                 HStack(alignment: .center) {
                                     VStack {

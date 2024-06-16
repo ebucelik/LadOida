@@ -21,6 +21,7 @@ public struct SearchCore {
 
     public enum Action: BindableAction {
         case searchAddress
+        case searchStationsToAddress
         case subscribeToSearchResultChanges
         case setSearchResult(ViewState<LocalSearchResponse>)
         case setSelectedAddress(MKLocalSearchCompletion)
@@ -69,6 +70,13 @@ public struct SearchCore {
                     for: 1.5,
                     scheduler: DispatchQueue.main.eraseToAnyScheduler()
                 )
+
+            case .searchStationsToAddress:
+                guard let selectedAddress = state.selectedAddress else { return .none }
+
+                return .run { send in
+                    try await self.searchService.searchRequest(localSearchCompletion: selectedAddress)
+                }
 
             case let .setSearchResult(stateChanged):
                 state.searchResult = stateChanged
