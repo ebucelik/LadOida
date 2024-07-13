@@ -21,6 +21,12 @@ public struct SearchCore {
 
         @Presents
         var stationsMapState: StationsMapCore.State?
+
+        var isTyping: Bool = false
+
+        var isLoadingOrIsTyping: Bool {
+            searchResult.isLoading || isTyping
+        }
     }
 
     public enum Action: BindableAction {
@@ -112,6 +118,7 @@ public struct SearchCore {
 
             case let .setSearchResult(stateChanged):
                 state.searchResult = stateChanged
+                state.isTyping = false
 
                 return .none
 
@@ -130,6 +137,8 @@ public struct SearchCore {
                 return .none
 
             case .binding(\.searchText):
+                state.isTyping = true
+
                 return .send(.searchAddress)
 
             case .binding:

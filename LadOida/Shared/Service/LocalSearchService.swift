@@ -76,6 +76,6 @@ extension LocalSearchService: MKLocalSearchCompleterDelegate {
     }
 
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: any Error) {
-        print(error.localizedDescription)
+        searchResults = nil
     }
 }

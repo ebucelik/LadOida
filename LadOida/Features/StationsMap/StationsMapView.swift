@@ -11,25 +11,34 @@ import ComposableArchitecture
 
 struct StationsMapView: View {
 
-    let store: StoreOf<StationsMapCore>
+    @Bindable var store: StoreOf<StationsMapCore>
 
     var body: some View {
         Map {
             ForEach(store.filteredStations, id: \.self) { station in
                 if let location = station.location {
-                    Marker(
-                        station.label ?? "Ladestelle",
+                    Annotation(
+                        "",
                         coordinate: CLLocationCoordinate2D(
                             latitude: location.latitude ?? 0,
                             longitude: location.longitude ?? 0
                         )
-                    )
-                    .tint(AppColors.color(.primary))
+                    ) {
+                        StationMarker()
+                            .onTapGesture {
+                                store.send(.showStationDetail(station))
+                            }
+                    }
                 }
             }
         }
         .mapControlVisibility(.hidden)
         .toolbarBackground(AppColors.color(.primary), for: .navigationBar)
+        .sheet(item: $store.scope(state: \.stationDetailCoreState, action: \.stationDetail)) { store in
+            StationDetailView(store: store)
+                .presentationDetents([.medium, .large])
+                .presentationContentInteraction(.scrolls)
+        }
         .safeAreaInset(edge: .bottom) {
             VStack(alignment: .leading) {
                 Text("Filter")

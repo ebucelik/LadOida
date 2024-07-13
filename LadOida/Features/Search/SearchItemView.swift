@@ -26,7 +26,7 @@ struct SearchItemView: View {
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(localSearchCompletion.title)
-                    .font(AppFonts.bold(.subtitle))
+                    .font(AppFonts.regular(.subtitle))
 
                 Text(localSearchCompletion.subtitle)
                     .font(AppFonts.regular(.body1))

@@ -14,6 +14,9 @@ public struct StationsMapCore {
         let searchStationResult: GeneralSearchStationResult
         var filteredStations: [GeneralSearchStation] = []
 
+        @Presents
+        var stationDetailCoreState: StationDetailCore.State?
+
         var containsFreeParking: Bool {
             searchStationResult.stations.contains(where: { $0.freeParking == true })
         }
@@ -53,6 +56,8 @@ public struct StationsMapCore {
 
     public enum Action {
         case filter(State.Filter)
+        case showStationDetail(GeneralSearchStation)
+        case stationDetail(PresentationAction<StationDetailCore.Action>)
     }
 
     public var body: some ReducerOf<Self> {
@@ -62,10 +67,12 @@ public struct StationsMapCore {
                 state.filter.contains(filter) ? state.filter.removeAll(where: { $0 == filter })
                 : state.filter.append(filter)
 
-                state.filteredStations = state.searchStationResult.stations
+                if state.filter.isEmpty {
+                    state.filteredStations = state.searchStationResult.stations
+                }
 
                 state.filter.forEach { filter in
-                    state.filteredStations = state.searchStationResult.stations.filter { station in
+                    state.filteredStations = state.filteredStations.filter { station in
                         switch filter {
                         case .freeParking:
                             station.freeParking == true
@@ -82,7 +89,23 @@ public struct StationsMapCore {
                 }
 
                 return .none
+
+            case let .showStationDetail(generalSearchStation):
+                state.stationDetailCoreState = StationDetailCore.State(station: generalSearchStation)
+
+                return .none
+
+            case .stationDetail(.dismiss):
+                state.stationDetailCoreState = nil
+
+                return .none
+
+            case .stationDetail:
+                return .none
             }
+        }
+        .ifLet(\.$stationDetailCoreState, action: \.stationDetail) {
+            StationDetailCore()
         }
     }
 }

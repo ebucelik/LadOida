@@ -30,9 +30,10 @@ struct AppView: View {
                 VStack {
                     Spacer()
 
-                    Label("Lad Oida", systemImage: "bolt.batteryblock")
+                    Label("Lad Oida", systemImage: "ev.charger.fill")
                         .frame(maxWidth: .infinity)
                         .font(AppFonts.bold(.title))
+                        .foregroundStyle(.white)
 
                     Spacer()
                 }
@@ -40,6 +41,7 @@ struct AppView: View {
             }
         }
         .onAppear {
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
             UINavigationBar.appearance().backgroundColor = AppColors.color(.primary)
             UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = .white
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white

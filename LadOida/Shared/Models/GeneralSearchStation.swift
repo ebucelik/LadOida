@@ -12,7 +12,7 @@ public struct GeneralSearchStation: Codable, Equatable, Hashable {
     public let evseCountryId: String?
     public let evseOperatorId: String?
     public let evseStationId: String?
-    public let status: String?
+    public let status: Status?
     public let label: String?
     public let description: String?
     public let postCode: String?
@@ -36,7 +36,7 @@ public struct GeneralSearchStation: Codable, Equatable, Hashable {
         evseCountryId: String?,
         evseOperatorId: String?,
         evseStationId: String?,
-        status: String?,
+        status: Status?,
         label: String?,
         description: String?,
         postCode: String?,
@@ -77,6 +77,20 @@ public struct GeneralSearchStation: Codable, Equatable, Hashable {
         self.openingHours = openingHours
         self.priceUrl = priceUrl
         self.points = points
+    }
+
+    public enum Status: String, Codable, Equatable, Hashable {
+        case ACTIVE
+        case INACTIVE
+
+        public var rawValue: String {
+            switch self {
+            case .ACTIVE:
+                return "Aktiv"
+            case .INACTIVE:
+                return "Inaktiv"
+            }
+        }
     }
 
     public func hash(into hasher: inout Hasher) {

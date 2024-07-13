@@ -18,7 +18,7 @@ struct SearchView: View {
         VStack {
             switch store.searchResult {
             case .none:
-                InfoView(state: .info("Suche nach Ladestellen", "magnifyingglass"))
+                InfoView(state: .info("Suche nach Ladestellen", "ev.charger.fill"))
 
             case .loading:
                 InfoView(state: .loading)
@@ -68,8 +68,8 @@ struct SearchView: View {
                             .listRowInsets(EdgeInsets())
                         }
                         .listStyle(.plain)
-                        .disabled(store.searchStationResult.isLoading)
-                        .opacity(store.searchStationResult.isLoading ? 0.8 : 1)
+                        .disabled(store.isLoadingOrIsTyping)
+                        .opacity(store.isLoadingOrIsTyping ? 0.8 : 1)
 
                         if let selectedAddress = store.selectedAddress {
                             Button {

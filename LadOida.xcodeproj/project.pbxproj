@@ -12,6 +12,9 @@
 		7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7102FDDA2C16006F00DE71AD /* Assets.xcassets */; };
 		7102FDE52C16029600DE71AD /* APISecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102FDE42C16029600DE71AD /* APISecretKey.swift */; };
 		7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7102FDE72C16052000DE71AD /* ComposableArchitecture */; };
+		712704342C42945B00FC0FEB /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712704332C42945B00FC0FEB /* StationDetailView.swift */; };
+		712704362C42947700FC0FEB /* StationDetailCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712704352C42947700FC0FEB /* StationDetailCore.swift */; };
+		712704382C429E2F00FC0FEB /* StationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712704372C429E2F00FC0FEB /* StationMarker.swift */; };
 		713A06882C1DE600006E1502 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06872C1DE600006E1502 /* AppColors.swift */; };
 		713A068B2C1DE9CC006E1502 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A068A2C1DE9CC006E1502 /* UIColor+Extensions.swift */; };
 		713A068D2C1DECC6006E1502 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A068C2C1DECC6006E1502 /* SearchItemView.swift */; };
@@ -60,6 +63,9 @@
 		7102FDD82C16006E00DE71AD /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		7102FDDA2C16006F00DE71AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7102FDE42C16029600DE71AD /* APISecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISecretKey.swift; sourceTree = "<group>"; };
+		712704332C42945B00FC0FEB /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
+		712704352C42947700FC0FEB /* StationDetailCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailCore.swift; sourceTree = "<group>"; };
+		712704372C429E2F00FC0FEB /* StationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMarker.swift; sourceTree = "<group>"; };
 		713A06872C1DE600006E1502 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		713A068A2C1DE9CC006E1502 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		713A068C2C1DECC6006E1502 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
@@ -150,6 +156,15 @@
 			path = LadOida;
 			sourceTree = "<group>";
 		};
+		712704322C42944500FC0FEB /* StationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				712704332C42945B00FC0FEB /* StationDetailView.swift */,
+				712704352C42947700FC0FEB /* StationDetailCore.swift */,
+			);
+			path = StationDetail;
+			sourceTree = "<group>";
+		};
 		713A06892C1DE9BF006E1502 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +193,7 @@
 		716D320A2C16073C00802D05 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				712704322C42944500FC0FEB /* StationDetail */,
 				71DA67EE2C1F6BCD0040CE65 /* StationsMap */,
 				716D322E2C16415300802D05 /* Search */,
 			);
@@ -267,6 +283,7 @@
 			children = (
 				71DA67EF2C1F6BE30040CE65 /* StationsMapView.swift */,
 				71DA67F12C1F6D2D0040CE65 /* StationsMapCore.swift */,
+				712704372C429E2F00FC0FEB /* StationMarker.swift */,
 			);
 			path = StationsMap;
 			sourceTree = "<group>";
@@ -364,6 +381,7 @@
 				71DA67F22C1F6D2D0040CE65 /* StationsMapCore.swift in Sources */,
 				716D32342C16477E00802D05 /* ConnectorType.swift in Sources */,
 				716D32192C162F6C00802D05 /* AuthenticationMode.swift in Sources */,
+				712704342C42945B00FC0FEB /* StationDetailView.swift in Sources */,
 				71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */,
 				716D32252C1633C000802D05 /* ProximitySearchPoint.swift in Sources */,
 				71DA67EB2C1F33FC0040CE65 /* SearchCalls.swift in Sources */,
@@ -385,9 +403,11 @@
 				7192034F2C1A408600A35654 /* Services.swift in Sources */,
 				713A06992C1E14F6006E1502 /* RadioButtonView.swift in Sources */,
 				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
+				712704382C429E2F00FC0FEB /* StationMarker.swift in Sources */,
 				716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */,
 				713A06882C1DE600006E1502 /* AppColors.swift in Sources */,
 				716D32142C1617AC00802D05 /* APIError.swift in Sources */,
+				712704362C42947700FC0FEB /* StationDetailCore.swift in Sources */,
 				716D32292C16387C00802D05 /* GeneralSearchPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,17 +20,6 @@ public enum AppFonts {
         case caption
     }
 
-    public enum AppFontBold {
-        case title
-        case title1
-        case title2
-        case subtitle
-        case body
-        case body1
-        case body2
-        case caption
-    }
-
     static func regular(_ font: AppFont) -> Font {
         switch font {
         case .title:
