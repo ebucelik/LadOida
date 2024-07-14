@@ -39,6 +39,8 @@ public struct SearchCore {
         case binding(BindingAction<State>)
         case showStationsMapView(GeneralSearchStationResult)
         case reset
+        case subscribeToLocationPermissionChanges
+        case showStationsNearLocation
 
         case stationsMapAction(PresentationAction<StationsMapCore.Action>)
     }
@@ -154,6 +156,22 @@ public struct SearchCore {
 
             case let .showStationsMapView(searchStationResult):
                 state.stationsMapState = StationsMapCore.State(searchStationResult: searchStationResult)
+
+                return .none
+
+            case .subscribeToLocationPermissionChanges:
+                return .run { send in
+                    for await locationPermission in LocationManager.shared.locationPermissionChanged {
+                        if locationPermission {
+                            print("Location given")
+                        } else {
+                            print("Location not given")
+                        }
+                    }
+                }
+
+            case .showStationsNearLocation:
+                LocationManager.shared.requestWhenInUseAuthorization()
 
                 return .none
 

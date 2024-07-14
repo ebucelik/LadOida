@@ -19,7 +19,7 @@ struct AppView: View {
                     TabView {
                         SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
                             .tabItem {
-                                Label("Search Stations", systemImage: "sparkle.magnifyingglass")
+                                Label("Suche Stationen", systemImage: "magnifyingglass")
                             }
                     }
                     .navigationTitle("Lad Oida")

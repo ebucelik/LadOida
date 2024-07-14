@@ -23,6 +23,7 @@
 		713A06942C1DF8CF006E1502 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 713A06912C1DF8A9006E1502 /* Montserrat-Regular.ttf */; };
 		713A06972C1E021F006E1502 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06962C1E021F006E1502 /* SpacerView.swift */; };
 		713A06992C1E14F6006E1502 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713A06982C1E14F6006E1502 /* RadioButtonView.swift */; };
+		713BA0E02C44527F00840E73 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BA0DF2C44527F00840E73 /* LocationManager.swift */; };
 		716D32092C16071700802D05 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716D32072C16071700802D05 /* Preview Assets.xcassets */; };
 		716D320D2C16076E00802D05 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320C2C16076E00802D05 /* APIClient.swift */; };
 		716D32102C16083200802D05 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D320F2C16083200802D05 /* Call.swift */; };
@@ -75,6 +76,7 @@
 		713A06952C1DF8FE006E1502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		713A06962C1E021F006E1502 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		713A06982C1E14F6006E1502 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		713BA0DF2C44527F00840E73 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		716D32072C16071700802D05 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		716D320C2C16076E00802D05 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		716D320F2C16083200802D05 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				716F47292C18D9C400D58C1C /* LocalSearchService.swift */,
 				7192034E2C1A408600A35654 /* Services.swift */,
+				713BA0DF2C44527F00840E73 /* LocationManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				713A06972C1E021F006E1502 /* SpacerView.swift in Sources */,
 				7192034F2C1A408600A35654 /* Services.swift in Sources */,
 				713A06992C1E14F6006E1502 /* RadioButtonView.swift in Sources */,
+				713BA0E02C44527F00840E73 /* LocationManager.swift in Sources */,
 				716D322D2C1638C000802D05 /* GeneralSearchStation.swift in Sources */,
 				712704382C429E2F00FC0FEB /* StationMarker.swift in Sources */,
 				716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */,

@@ -18,16 +18,24 @@ struct SearchView: View {
         VStack {
             switch store.searchResult {
             case .none:
-                InfoView(state: .info("Suche nach Ladestellen", "ev.charger.fill"))
+                infoViewWithLocationBanner(
+                    message: "Suche nach Ladestellen",
+                    image: "ev.charger.fill"
+                )
 
             case .loading:
                 InfoView(state: .loading)
 
             case let .loaded(searchResponse):
                 if searchResponse.mapItems.isEmpty {
-                    InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
+                    infoViewWithLocationBanner(
+                        message: "Keine Adressen gefunden",
+                        image: "xmark.circle.fill"
+                    )
                 } else {
                     VStack(alignment: .leading, spacing: 0) {
+                        locationBanner()
+
                         HStack {
                             if searchResponse.mapItems.count == 1 {
                                 Text("\(searchResponse.mapItems.count) Adresse gefunden")
@@ -108,6 +116,7 @@ struct SearchView: View {
         }
         .onAppear {
             store.send(.subscribeToSearchResultChanges)
+            store.send(.subscribeToLocationPermissionChanges)
         }
         .searchable(text: $store.searchText, prompt: "Adresse eingeben")
         .navigationDestination(
@@ -117,6 +126,58 @@ struct SearchView: View {
             )
         ) { stationsMapStore in
             StationsMapView(store: stationsMapStore)
+        }
+    }
+
+    @ViewBuilder
+    private func locationBanner() -> some View {
+        Button(
+            action: {
+                store.send(.showStationsNearLocation)
+            },
+            label: {
+                VStack {
+                    HStack {
+                        Spacer()
+
+                        Image(systemName: "location.fill")
+                            .renderingMode(.template)
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 20, height: 20)
+
+                        Text("Ladestellen in der Nähe anzeigen")
+                            .font(AppFonts.regular(.body))
+                            .foregroundStyle(.white)
+
+                        Spacer()
+                    }
+                    .padding()
+                }
+                .background(AppColors.color(.primary))
+            }
+        )
+    }
+
+    @ViewBuilder
+    private func infoViewWithLocationBanner(
+        message: String,
+        image: String
+    ) -> some View {
+        VStack(alignment: .center, spacing: 16) {
+            locationBanner()
+
+            Spacer()
+
+            Text(message)
+                .font(AppFonts.regular(.title2))
+                .frame(maxWidth: .infinity, alignment: .center)
+
+            Image(systemName: image)
+                .resizable()
+                .frame(width: 80, height: 80)
+
+            Spacer()
         }
     }
 }
