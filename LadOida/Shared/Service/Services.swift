@@ -14,4 +14,6 @@ final class Services {
     )
 
     static let searchService: SearchServiceProtocol = SearchService()
+
+    static let locationManagerService: LocationManagerService = LocationManagerService()
 }

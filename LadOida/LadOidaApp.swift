@@ -20,7 +20,8 @@ struct LadOidaApp: App {
                             AppCore(
                                 service: Services.appService,
                                 localSearchService: Services.localSearchService,
-                                searchService: Services.searchService
+                                searchService: Services.searchService,
+                                locationManagerService: Services.locationManagerService
                             )
                         }
                     )

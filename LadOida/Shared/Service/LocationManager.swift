@@ -8,14 +8,12 @@
 import CoreLocation
 import Combine
 
-public class LocationManager: CLLocationManager, CLLocationManagerDelegate {
-    fileprivate override init() {
+public class LocationManagerService: CLLocationManager, CLLocationManagerDelegate {
+    override init() {
         super.init()
 
         delegate = self
     }
-
-    public static let shared = LocationManager()
 
     @Published var isLocationPermissionActivated: Bool = false
     private var cancellable: AnyCancellable?
@@ -30,9 +28,6 @@ public class LocationManager: CLLocationManager, CLLocationManagerDelegate {
 
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-
         case .restricted, .denied:
             isLocationPermissionActivated = false
 
@@ -42,5 +37,31 @@ public class LocationManager: CLLocationManager, CLLocationManagerDelegate {
         default:
             break
         }
+    }
+
+    public func convertLocationToAddress(_ location: CLLocation) async throws -> String {
+        let geocoder = CLGeocoder()
+
+        guard let placemark = try await geocoder.reverseGeocodeLocation(location).first
+        else { throw APIError.responseError }
+
+        var address = ""
+
+        // Street address
+        if let street = placemark.thoroughfare {
+            address.append(street)
+        }
+
+        // Zip code
+        if let zipCode = placemark.postalCode {
+            address.append(", \(zipCode) ")
+        }
+
+        // City
+        if let city = placemark.locality {
+            address.append(city)
+        }
+
+        return address
     }
 }

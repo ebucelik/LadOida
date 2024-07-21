@@ -52,15 +52,18 @@ public struct AppCore {
     let service: AppServiceProtocol
     let localSearchService: LocalSearchServiceProtocol
     let searchService: SearchServiceProtocol
+    let locationManagerService: LocationManagerService
 
     init(
         service: AppServiceProtocol,
         localSearchService: LocalSearchServiceProtocol,
-        searchService: SearchServiceProtocol
+        searchService: SearchServiceProtocol,
+        locationManagerService: LocationManagerService
     ) {
         self.service = service
         self.localSearchService = localSearchService
         self.searchService = searchService
+        self.locationManagerService = locationManagerService
     }
 
     public var body: some ReducerOf<Self> {
@@ -70,7 +73,8 @@ public struct AppCore {
         ) {
             SearchCore(
                 localSearchService: localSearchService,
-                searchService: searchService
+                searchService: searchService,
+                locationManagerService: locationManagerService
             )
         }
         

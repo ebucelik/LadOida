@@ -162,8 +162,9 @@ struct StationDetailView: View {
                     .font(AppFonts.bold(.subtitle))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                if link {
-                    Text("[\(subtitle)](\(subtitle))")
+                if link,
+                   let url = URL(string: title == "Telefonnummer" ? "tel:\(subtitle)" : subtitle) {
+                    Link(subtitle, destination: url)
                         .font(AppFonts.regular(.subtitle))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
@@ -172,6 +173,7 @@ struct StationDetailView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
+            .multilineTextAlignment(.leading)
         }
     }
 }
