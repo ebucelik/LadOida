@@ -7,7 +7,10 @@
 
 import Foundation
 
-public struct GeneralSearchPoint: Codable, Equatable {
+public struct GeneralSearchPoint: Codable, Identifiable, Equatable {
+    public var id: String {
+        evseId ?? UUID().uuidString
+    }
     public let `public`: Bool?
     public let evseId: String?
     public let energyInKw: Double?

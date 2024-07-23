@@ -187,6 +187,8 @@ public struct SearchCore {
                     let address = try await self.locationManagerService.convertLocationToAddress(location)
 
                     await send(.setSearchText(address))
+                } catch: { error, send in
+                    await send(.setSearchResult(.error(error)))
                 }
 
             case let .setSearchText(searchText):

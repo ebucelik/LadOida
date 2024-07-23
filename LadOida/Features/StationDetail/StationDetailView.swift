@@ -35,68 +35,68 @@ struct StationDetailView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    detailRow(
+                    DetailRow(
                         title: "Status",
                         subtitle: store.station.status?.rawValue
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Öffentlich",
                         subtitle: store.station.public == true ? "Ja" : "Nein"
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Straße",
                         subtitle: store.station.street
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Ort",
                         subtitle: "\(store.station.postCode ?? "") \(store.station.city ?? "")"
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Beschreibung",
                         subtitle: store.station.description
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Website",
                         subtitle: store.station.website,
                         link: true
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Telefonnummer",
                         subtitle: store.station.telephone,
                         link: true
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "E-Mail",
                         subtitle: store.station.email,
                         link: true
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Preise",
                         subtitle: store.station.priceUrl,
                         link: true
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Grüne Energie",
                         subtitle: store.station.greenEnergy == true ? "Ja" : "Nein"
                     )
 
-                    detailRow(
+                    DetailRow(
                         title: "Gratis Parken",
                         subtitle: store.station.freeParking == true ? "Ja" : "Nein"
                     )
 
                     if let openingHours = store.station.openingHours {
                         if let text = openingHours.text {
-                            detailRow(
+                            DetailRow(
                                 title: "Öffnungszeiten",
                                 subtitle: text == "anytime" ? "Immer geöffnet" : text
                             )
@@ -105,10 +105,73 @@ struct StationDetailView: View {
                                 "\(openingHourDetail.fromWeekday ?? "") - \(openingHourDetail.toWeekday ?? ""), \(openingHourDetail.fromTime ?? "") - \(openingHourDetail.toTime ?? "")\n"
                             }.joined()
 
-                            detailRow(
+                            DetailRow(
                                 title: "Öffnungszeiten",
                                 subtitle: openingDetailHours
                             )
+                        }
+                    }
+
+                    DetailRow(
+                        title: "Ladepunkte"
+                    ) {
+                        VStack(alignment: .leading, spacing: 16) {
+                            ForEach(Array(store.station.points.enumerated()), id: \.offset) { index, point in
+                                VStack {
+                                    HStack {
+                                        if let energyInKw = point.energyInKw {
+                                            Text("\(String(format: "%.0f", energyInKw)) kW")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            Text("|")
+                                                .font(AppFonts.regular(.subtitle))
+                                        }
+
+                                        ForEach(point.connectorTypes, id: \.self) { connectorType in
+                                            Text(connectorType)
+                                                .font(AppFonts.regular(.subtitle))
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    HStack {
+                                        ForEach(point.authenticationModes, id: \.self) { authenticationMode in
+                                            if let mode = getImageForAuthenticationMode(key: authenticationMode) {
+                                                HStack {
+                                                    mode.0
+                                                        .resizable()
+                                                        .frame(width: 17, height: 17)
+
+                                                    Text(mode.1)
+                                                        .font(AppFonts.regular(.subtitle))
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    HStack {
+                                        ForEach(point.vehicleTypes, id: \.self) { vehicleType in
+                                            if let type = getImageForVehicleType(key: vehicleType) {
+                                                HStack {
+                                                    type.0
+                                                        .resizable()
+                                                        .frame(width: 17, height: 17)
+
+                                                    Text(type.1)
+                                                        .font(AppFonts.regular(.subtitle))
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+
+                                if store.station.points.count > 1,
+                                   index != store.station.points.count - 1 {
+                                    Divider()
+                                }
+                            }
                         }
                     }
 
@@ -154,14 +217,72 @@ struct StationDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    @ViewBuilder
-    func detailRow(title: String, subtitle: String?, link: Bool = false) -> some View {
-        if let subtitle {
-            VStack {
-                Text(title)
-                    .font(AppFonts.bold(.subtitle))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+    func getImageForAuthenticationMode(key: String) -> (Image, String)? {
+        switch key {
+        case "CASH":
+            return (Image(systemName: "eurosign.square.fill"), "Bar")
+        case "RFID":
+            return (Image(systemName: "wifi.square.fill"), "RFID")
+        case "CREDIT_CARD":
+            return (Image(systemName: "creditcard.fill"), "Kreditkarte")
+        case "DEBIT_CARD":
+            return (Image(systemName: "creditcard"), "Debitkarte")
+        case "APP":
+            return (Image(systemName: "iphone.gen3.circle.fill"), "App")
+        case "SMS":
+            return (Image(systemName: "message.badge.filled.fill.rtl"), "Sms")
+        case "NFC":
+            return (Image(systemName: "wifi.router.fill"), "NFC")
+        case "WEBSITE":
+            return (Image(systemName: "globe"), "Web")
+        default:
+            return nil
+        }
+    }
 
+    func getImageForVehicleType(key: String) -> (Image, String)? {
+        switch key {
+        case "CAR":
+            return (Image(systemName: "car.fill"), "Auto")
+        case "MOTORCYCLE":
+            return (Image(systemName: "bicycle.circle.fill"), "Motorrad")
+        case "BICYCLE":
+            return (Image(systemName: "figure.outdoor.cycle"), "Fahrrad")
+        case "BOAT":
+            return (Image(systemName: "sailboat.circle.fill"), "Boot")
+        case "TRUCK":
+            return (Image(systemName: "truck.box.fill"), "Truck")
+        default:
+            return nil
+        }
+    }
+}
+
+struct DetailRow<Content: View>: View{
+    let title: String
+    let subtitle: String?
+    let link: Bool
+    @ViewBuilder let content: (() -> Content)
+
+    init(
+        title: String,
+        subtitle: String? = nil,
+        link: Bool = false,
+        content: @escaping (() -> Content) = { EmptyView() }
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.link = link
+        self.content = content
+    }
+
+    var body: some View {
+        VStack {
+            Text(title)
+                .font(AppFonts.bold(.subtitle))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            if let subtitle {
                 if link,
                    let url = URL(string: title == "Telefonnummer" ? "tel:\(subtitle)" : subtitle) {
                     Link(subtitle, destination: url)
@@ -173,7 +294,11 @@ struct StationDetailView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            .multilineTextAlignment(.leading)
+
+            if Content.self != EmptyView.self {
+                content()
+            }
         }
+        .multilineTextAlignment(.leading)
     }
 }

@@ -15,6 +15,30 @@ struct SearchView: View {
     var store: StoreOf<SearchCore>
 
     var body: some View {
+        SearchBodyView(store: store)
+            .onAppear {
+                store.send(.subscribeToSearchResultChanges)
+                store.send(.subscribeToLocationPermissionChanges)
+            }
+            .searchable(text: $store.searchText, prompt: "Adresse eingeben")
+            .navigationDestination(
+                item: $store.scope(
+                    state: \.stationsMapState,
+                    action: \.stationsMapAction
+                )
+            ) { stationsMapStore in
+                StationsMapView(store: stationsMapStore)
+            }
+    }
+}
+
+struct SearchBodyView: View {
+
+    @Bindable
+    var store: StoreOf<SearchCore>
+    @Environment(\.isSearching) var isSearching
+
+    var body: some View {
         VStack {
             switch store.searchResult {
             case .none:
@@ -114,18 +138,10 @@ struct SearchView: View {
                 InfoView(state: .error("Keine Adressen gefunden", "xmark.circle.fill"))
             }
         }
-        .onAppear {
-            store.send(.subscribeToSearchResultChanges)
-            store.send(.subscribeToLocationPermissionChanges)
-        }
-        .searchable(text: $store.searchText, prompt: "Adresse eingeben")
-        .navigationDestination(
-            item: $store.scope(
-                state: \.stationsMapState,
-                action: \.stationsMapAction
-            )
-        ) { stationsMapStore in
-            StationsMapView(store: stationsMapStore)
+        .onChange(of: isSearching) {
+            if !isSearching, store.searchResult == .loading {
+                store.send(.reset)
+            }
         }
     }
 
