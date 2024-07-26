@@ -13,6 +13,7 @@ public class LocationManagerService: CLLocationManager, CLLocationManagerDelegat
         super.init()
 
         delegate = self
+        desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
 
     @Published var isLocationPermissionActivated: Bool = false

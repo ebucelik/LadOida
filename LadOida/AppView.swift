@@ -15,17 +15,18 @@ struct AppView: View {
     var body: some View {
         ZStack {
             if store.allMetaDataLoaded {
-                NavigationStack {
-                    TabView {
-                        SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
-                            .tabItem {
-                                Label("Suche Stationen", systemImage: "magnifyingglass")
-                            }
-                    }
-                    .navigationTitle("Lad Oida")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .tint(AppColors.color(.primary))
+                TabView {
+                    SearchView(store: store.scope(state: \.searchState, action: \.searchAction))
+                        .tabItem {
+                            Label("Suche Stationen", systemImage: "magnifyingglass")
+                        }
+
+                    MoreView()
+                        .tabItem {
+                            Label("Mehr", systemImage: "ellipsis")
+                        }
                 }
+                .tint(AppColors.color(.primary))
             } else {
                 VStack {
                     Spacer()
@@ -47,7 +48,7 @@ struct AppView: View {
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
             UISearchBar.appearance().tintColor = .white
-            UITabBar.appearance().isTranslucent = false
+            UITabBar.appearance().backgroundColor = .white
 
             store.send(.onViewAppear)
         }

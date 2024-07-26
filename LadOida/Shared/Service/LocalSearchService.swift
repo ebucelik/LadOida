@@ -45,7 +45,6 @@ class LocalSearchService: NSObject, LocalSearchServiceProtocol {
         searchText: String
     ) {
         localSearchCompleter.resultTypes = resultType
-        localSearchCompleter.pointOfInterestFilter = .includingAll
         localSearchCompleter.region =  MKCoordinateRegion(
             center: CLLocationCoordinate2D(
                 latitude: lat,

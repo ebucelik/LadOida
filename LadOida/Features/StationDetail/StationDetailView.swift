@@ -117,7 +117,7 @@ struct StationDetailView: View {
                     ) {
                         VStack(alignment: .leading, spacing: 16) {
                             ForEach(Array(store.station.points.enumerated()), id: \.offset) { index, point in
-                                VStack {
+                                VStack(spacing: 2) {
                                     HStack {
                                         if let energyInKw = point.energyInKw {
                                             Text("\(String(format: "%.0f", energyInKw)) kW")
@@ -165,6 +165,79 @@ struct StationDetailView: View {
                                         }
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    if let priceInCentPerKwh = point.priceInCentPerKwh {
+                                        HStack {
+                                            Text("Preis pro kWh:")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            Text("\(String(format: "%.0f", priceInCentPerKwh)) cent")
+                                                .font(AppFonts.bold(.subtitle))
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+
+                                    if let priceInCentPerMin = point.priceInCentPerMin {
+                                        HStack {
+                                            Text("Preis pro Minute:")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            Text("\(String(format: "%.0f", priceInCentPerMin)) cent")
+                                                .font(AppFonts.bold(.subtitle))
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+
+                                    if let evseId = point.evseId {
+                                        HStack {
+                                            Text("EVSE ID:")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            Text(evseId)
+                                                .font(AppFonts.bold(.subtitle))
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+
+                                    if let roaming = point.roaming {
+                                        HStack {
+                                            Text("Roaming")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            if roaming {
+                                                Image(systemName: "checkmark.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 17, height: 17)
+                                                    .foregroundStyle(.green)
+                                            } else {
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 17, height: 17)
+                                                    .foregroundStyle(.red)
+                                            }
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+
+                                    if let freeOfCharge = point.freeOfCharge {
+                                        HStack {
+                                            Text("Kostenlos")
+                                                .font(AppFonts.regular(.subtitle))
+
+                                            if freeOfCharge {
+                                                Image(systemName: "checkmark.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 17, height: 17)
+                                                    .foregroundStyle(.green)
+                                            } else {
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 17, height: 17)
+                                                    .foregroundStyle(.red)
+                                            }
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
                                 }
 
                                 if store.station.points.count > 1,
@@ -206,6 +279,7 @@ struct StationDetailView: View {
                                 .border(AppColors.color(.divider))
                             }
                         )
+                        .padding(.bottom)
                     }
                 }
                 .padding()
@@ -215,6 +289,8 @@ struct StationDetailView: View {
         }
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .textSelection(.enabled)
+        .ignoresSafeArea()
     }
 
     func getImageForAuthenticationMode(key: String) -> (Image, String)? {
@@ -277,28 +353,30 @@ struct DetailRow<Content: View>: View{
     }
 
     var body: some View {
-        VStack {
-            Text(title)
-                .font(AppFonts.bold(.subtitle))
-                .frame(maxWidth: .infinity, alignment: .leading)
+        if subtitle != nil || Content.self != EmptyView.self {
+            VStack {
+                Text(title)
+                    .font(AppFonts.bold(.subtitle))
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            if let subtitle {
-                if link,
-                   let url = URL(string: title == "Telefonnummer" ? "tel:\(subtitle)" : subtitle) {
-                    Link(subtitle, destination: url)
-                        .font(AppFonts.regular(.subtitle))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                } else {
-                    Text(subtitle)
-                        .font(AppFonts.regular(.subtitle))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                if let subtitle {
+                    if link,
+                       let url = URL(string: title == "Telefonnummer" ? "tel:\(subtitle)" : subtitle) {
+                        Link(subtitle, destination: url)
+                            .font(AppFonts.regular(.subtitle))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        Text(subtitle)
+                            .font(AppFonts.regular(.subtitle))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+
+                if Content.self != EmptyView.self {
+                    content()
                 }
             }
-
-            if Content.self != EmptyView.self {
-                content()
-            }
+            .multilineTextAlignment(.leading)
         }
-        .multilineTextAlignment(.leading)
     }
 }

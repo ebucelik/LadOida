@@ -179,7 +179,11 @@ public struct SearchCore {
 
             case .checkLocation:
                 guard state.didClickedOnShowStationsNearLocation,
-                      let location = self.locationManagerService.location else { return .none }
+                      let location = locationManagerService.location else {
+                    state.didClickedOnShowStationsNearLocation = false
+
+                    return .none
+                }
 
                 state.didClickedOnShowStationsNearLocation = false
 

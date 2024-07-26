@@ -15,20 +15,24 @@ struct SearchView: View {
     var store: StoreOf<SearchCore>
 
     var body: some View {
-        SearchBodyView(store: store)
-            .onAppear {
-                store.send(.subscribeToSearchResultChanges)
-                store.send(.subscribeToLocationPermissionChanges)
-            }
-            .searchable(text: $store.searchText, prompt: "Adresse eingeben")
-            .navigationDestination(
-                item: $store.scope(
-                    state: \.stationsMapState,
-                    action: \.stationsMapAction
-                )
-            ) { stationsMapStore in
-                StationsMapView(store: stationsMapStore)
-            }
+        NavigationStack {
+            SearchBodyView(store: store)
+                .onAppear {
+                    store.send(.subscribeToSearchResultChanges)
+                    store.send(.subscribeToLocationPermissionChanges)
+                }
+                .searchable(text: $store.searchText, prompt: "Adresse eingeben")
+                .navigationDestination(
+                    item: $store.scope(
+                        state: \.stationsMapState,
+                        action: \.stationsMapAction
+                    )
+                ) { stationsMapStore in
+                    StationsMapView(store: stationsMapStore)
+                }
+                .navigationTitle("Lad Oida")
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
@@ -127,6 +131,12 @@ struct SearchBodyView: View {
                                 }
                                 .padding()
                                 .background(AppColors.color(.primary))
+                                .clipShape(
+                                    .rect(
+                                        topLeadingRadius: 12,
+                                        topTrailingRadius: 12
+                                    )
+                                )
                             }
                             .disabled(store.searchStationResult.isLoading)
                             .opacity(store.searchStationResult.isLoading ? 0.8 : 1)
@@ -171,6 +181,12 @@ struct SearchBodyView: View {
                     .padding()
                 }
                 .background(AppColors.color(.primary))
+                .clipShape(
+                    .rect(
+                        bottomLeadingRadius: 12,
+                        bottomTrailingRadius: 12
+                    )
+                )
             }
         )
     }
