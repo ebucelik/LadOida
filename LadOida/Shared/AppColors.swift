@@ -26,7 +26,7 @@ public class AppColors {
     private static func internalColor(_ color: AppColorTypes) -> UIColor {
         switch color {
         case .primary:
-            #colorLiteral(red: 0.2462522984, green: 0.6474125981, blue: 0.2099429369, alpha: 1)
+            #colorLiteral(red: 0.2470588235, green: 0.6470588235, blue: 0.2117647059, alpha: 1)
         case .divider:
             #colorLiteral(red: 0.8965865374, green: 0.8965864778, blue: 0.8965865374, alpha: 1)
         case .info:

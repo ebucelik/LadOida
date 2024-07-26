@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import Lottie
 
 struct AppView: View {
 
@@ -31,10 +32,17 @@ struct AppView: View {
                 VStack {
                     Spacer()
 
-                    Label("Lad Oida", systemImage: "ev.charger.fill")
-                        .frame(maxWidth: .infinity)
-                        .font(AppFonts.bold(.title))
-                        .foregroundStyle(.white)
+                    HStack(spacing: 8) {
+                        LottieView(animation: .named("battery"))
+                            .resizable()
+                            .looping()
+                            .frame(width: 100, height: 100)
+
+                        Text("Lad Oida")
+                            .font(AppFonts.bold(.title))
+                            .foregroundStyle(.white)
+                    }
+                    .frame(maxWidth: .infinity)
 
                     Spacer()
                 }

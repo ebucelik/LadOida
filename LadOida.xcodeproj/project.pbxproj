@@ -52,6 +52,8 @@
 		716F472A2C18D9C400D58C1C /* LocalSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F47292C18D9C400D58C1C /* LocalSearchService.swift */; };
 		716F472C2C18DB9900D58C1C /* LocalSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */; };
 		7192034F2C1A408600A35654 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192034E2C1A408600A35654 /* Services.swift */; };
+		71BA19552C5448DF008B47AF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 71BA19542C5448DF008B47AF /* Lottie */; };
+		71BA195B2C5450A1008B47AF /* battery.json in Resources */ = {isa = PBXBuildFile; fileRef = 71BA195A2C5450A1008B47AF /* battery.json */; };
 		71DA2E2E2C53FFDE00D2AC86 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA2E2D2C53FFDE00D2AC86 /* MoreView.swift */; };
 		71DA67EB2C1F33FC0040CE65 /* SearchCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */; };
 		71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EC2C1F353E0040CE65 /* SearchService.swift */; };
@@ -107,6 +109,7 @@
 		716F47292C18D9C400D58C1C /* LocalSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchService.swift; sourceTree = "<group>"; };
 		716F472B2C18DB9900D58C1C /* LocalSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchResponse.swift; sourceTree = "<group>"; };
 		7192034E2C1A408600A35654 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		71BA195A2C5450A1008B47AF /* battery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = battery.json; sourceTree = "<group>"; };
 		71DA2E2D2C53FFDE00D2AC86 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		71DA67EA2C1F33FC0040CE65 /* SearchCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCalls.swift; sourceTree = "<group>"; };
 		71DA67EC2C1F353E0040CE65 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 			files = (
 				71F969FB2C5439B20079BC25 /* SwiftMessages in Frameworks */,
 				7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */,
+				71BA19552C5448DF008B47AF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +161,7 @@
 				716D32372C16481E00802D05 /* AppCalls.swift */,
 				7102FDE42C16029600DE71AD /* APISecretKey.swift */,
 				7102FDDA2C16006F00DE71AD /* Assets.xcassets */,
+				71BA195A2C5450A1008B47AF /* battery.json */,
 				716D32082C16071700802D05 /* Preview Content */,
 			);
 			path = LadOida;
@@ -323,6 +328,7 @@
 			packageProductDependencies = (
 				7102FDE72C16052000DE71AD /* ComposableArchitecture */,
 				71F969FA2C5439B20079BC25 /* SwiftMessages */,
+				71BA19542C5448DF008B47AF /* Lottie */,
 			);
 			productName = LadOida;
 			productReference = 7102FDD32C16006E00DE71AD /* LadOida.app */;
@@ -345,16 +351,17 @@
 			};
 			buildConfigurationList = 7102FDCE2C16006E00DE71AD /* Build configuration list for PBXProject "LadOida" */;
 			compatibilityVersion = "Xcode 15.3";
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				de,
 			);
 			mainGroup = 7102FDCA2C16006E00DE71AD;
 			packageReferences = (
 				7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				71F969F92C5439B20079BC25 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
+				71BA19532C5448DF008B47AF /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 7102FDD42C16006E00DE71AD /* Products */;
 			projectDirPath = "";
@@ -372,6 +379,7 @@
 			files = (
 				716D32092C16071700802D05 /* Preview Assets.xcassets in Resources */,
 				7102FDDB2C16006F00DE71AD /* Assets.xcassets in Resources */,
+				71BA195B2C5450A1008B47AF /* battery.json in Resources */,
 				713A06932C1DF8CF006E1502 /* Montserrat-Bold.ttf in Resources */,
 				713A06942C1DF8CF006E1502 /* Montserrat-Regular.ttf in Resources */,
 			);
@@ -568,6 +576,8 @@
 				INFOPLIST_FILE = LadOida/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lad Oida";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wir benötigen Ihren Standort um Ladestellen in Ihrer Nähe anzuzeigen.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wir benötigen Ihren Standort um Ladestellen in Ihrer Nähe anzuzeigen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -606,6 +616,8 @@
 				INFOPLIST_FILE = LadOida/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lad Oida";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wir benötigen Ihren Standort um Ladestellen in Ihrer Nähe anzuzeigen.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wir benötigen Ihren Standort um Ladestellen in Ihrer Nähe anzuzeigen.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -662,6 +674,14 @@
 				minimumVersion = 1.11.0;
 			};
 		};
+		71BA19532C5448DF008B47AF /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		71F969F92C5439B20079BC25 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
@@ -677,6 +697,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		71BA19542C5448DF008B47AF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71BA19532C5448DF008B47AF /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 		71F969FA2C5439B20079BC25 /* SwiftMessages */ = {
 			isa = XCSwiftPackageProductDependency;

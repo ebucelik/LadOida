@@ -19,13 +19,5 @@ public struct StationDetailCore {
         }
     }
 
-    public enum Action {
-
-    }
-
-    public var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {}
-        }
-    }
+    public enum Action {}
 }
