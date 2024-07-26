@@ -24,11 +24,13 @@ public struct SearchCore {
         @Presents
         var stationsMapState: StationsMapCore.State?
 
-        var isTyping: Bool = false
+        var isTyping = false
 
         var isLoadingOrIsTyping: Bool {
             searchResult.isLoading || isTyping
         }
+
+        var isLocationFound = true
     }
 
     public enum Action: BindableAction {
@@ -182,9 +184,12 @@ public struct SearchCore {
                       let location = locationManagerService.location else {
                     state.didClickedOnShowStationsNearLocation = false
 
+                    state.isLocationFound = locationManagerService.location != nil
+
                     return .none
                 }
 
+                state.isLocationFound = true
                 state.didClickedOnShowStationsNearLocation = false
 
                 return .run { send in

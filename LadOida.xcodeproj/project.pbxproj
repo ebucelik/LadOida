@@ -57,6 +57,7 @@
 		71DA67ED2C1F353E0040CE65 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EC2C1F353E0040CE65 /* SearchService.swift */; };
 		71DA67F02C1F6BE30040CE65 /* StationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67EF2C1F6BE30040CE65 /* StationsMapView.swift */; };
 		71DA67F22C1F6D2D0040CE65 /* StationsMapCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DA67F12C1F6D2D0040CE65 /* StationsMapCore.swift */; };
+		71F969FB2C5439B20079BC25 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 71F969FA2C5439B20079BC25 /* SwiftMessages */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F969FB2C5439B20079BC25 /* SwiftMessages in Frameworks */,
 				7102FDE82C16052000DE71AD /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +322,7 @@
 			name = LadOida;
 			packageProductDependencies = (
 				7102FDE72C16052000DE71AD /* ComposableArchitecture */,
+				71F969FA2C5439B20079BC25 /* SwiftMessages */,
 			);
 			productName = LadOida;
 			productReference = 7102FDD32C16006E00DE71AD /* LadOida.app */;
@@ -351,6 +354,7 @@
 			mainGroup = 7102FDCA2C16006E00DE71AD;
 			packageReferences = (
 				7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				71F969F92C5439B20079BC25 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			productRefGroup = 7102FDD42C16006E00DE71AD /* Products */;
 			projectDirPath = "";
@@ -658,6 +662,14 @@
 				minimumVersion = 1.11.0;
 			};
 		};
+		71F969F92C5439B20079BC25 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -665,6 +677,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7102FDE62C16052000DE71AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		71F969FA2C5439B20079BC25 /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71F969F92C5439B20079BC25 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

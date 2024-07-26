@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import MapKit
+import SwiftMessages
 
 struct SearchView: View {
 
@@ -41,6 +42,28 @@ struct SearchBodyView: View {
     @Bindable
     var store: StoreOf<SearchCore>
     @Environment(\.isSearching) var isSearching
+
+    @State
+    private var bannerMessage: BannerMessage?
+
+    private var config: SwiftMessages.Config {
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .bottom
+        config.interactiveHide = true
+        config.haptic = .success
+        config.duration = .forever
+
+        return config
+    }
+
+    public struct BannerMessage: Equatable, Identifiable {
+        public var id: String { title }
+        public let title: String
+
+        public init(title: String) {
+            self.title = title
+        }
+    }
 
     var body: some View {
         VStack {
@@ -152,6 +175,31 @@ struct SearchBodyView: View {
             if !isSearching, store.searchResult == .loading {
                 store.send(.reset)
             }
+        }
+        .onChange(of: store.isLocationFound) {
+            bannerMessage = store.isLocationFound
+            ? nil
+            : BannerMessage(title: "Ihre Adresse konnte nicht lokalisiert werden.")
+        }
+        .swiftMessage(
+            message: $bannerMessage,
+            config: config
+        ) { message in
+            HStack(spacing: 16) {
+                Image(systemName: "info.circle.fill")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .foregroundStyle(.white)
+
+                Text(message.title)
+                    .font(AppFonts.regular(.subtitle))
+                    .foregroundStyle(.white)
+            }
+            .frame(height: 100)
+            .frame(maxWidth: .infinity)
+            .background(AppColors.color(.info))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding()
         }
     }
 
