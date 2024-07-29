@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct MoreView: View {
     var body: some View {
@@ -13,9 +14,28 @@ struct MoreView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Spacer()
 
-                Text("Sind Sie zufrieden mit der App?\nDann bewerten Sie uns im App Store 🫶🏼")
+                Text("Sind Sie zufrieden mit der App?\nDann bewerten Sie uns im App Store.")
                     .multilineTextAlignment(.center)
                     .font(AppFonts.regular(.subtitle))
+                    .padding(.bottom, 20)
+
+                if let windowScene = UIApplication.shared.connectedScenes.first(
+                    where: { $0.activationState == .foregroundActive }
+                ) as? UIWindowScene {
+                    Button {
+                        SKStoreReviewController.requestReview(in: windowScene)
+                    } label: {
+                        HStack {
+                            Text("Jetzt bewerten ⭐️")
+                                .font(AppFonts.regular(.subtitle))
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        .padding()
+                        .background(AppColors.color(.primary))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                }
 
                 Spacer()
 
